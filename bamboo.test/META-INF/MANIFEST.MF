@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: bamboo.test
+Bundle-Vendor: George Lindholm
+Bundle-SymbolicName: bamboo.test
+Bundle-Version: 1.0.0.qualifier
+Fragment-Host: bamboo.core;bundle-version="1.0.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-17
+Require-Bundle: junit-jupiter-api,
+ org.slf4j.api,
+ org.apache.log4j;bundle-version="1.2.24"
+Automatic-Module-Name: bamboo.test
