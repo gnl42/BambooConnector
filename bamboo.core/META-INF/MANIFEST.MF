@@ -9,12 +9,12 @@ Export-Package: me.glindholm.mylyn.build.bamboo.api,
  me.glindholm.mylyn.build.bamboo.core.internal,
  me.glindholm.mylyn.build.bamboo.core.internal.client,
  me.glindholm.mylyn.build.bamboo.invoker,
- me.glindholm.mylyn.build.bamboo.model
+ me.glindholm.mylyn.build.bamboo.model,
+ org.apache.commons.lang3
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.mylyn.builds.core,
  org.eclipse.mylyn.commons.core,
  org.eclipse.mylyn.commons.repositories.core,
- org.apache.commons.lang3;bundle-version="3.1.0",
  org.eclipse.ui.workbench;bundle-version="3.127.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-ActivationPolicy: lazy
@@ -30,5 +30,6 @@ Bundle-ClassPath: .,
  target/lib/jettison.jar,
  target/lib/jsr305.jar,
  target/lib/swagger-annotations.jar,
- target/lib/javax.annotation-api.jar
+ target/lib/javax.annotation-api.jar,
+ target/lib/commons-lang3.jar
 Automatic-Module-Name: bamboo.core
