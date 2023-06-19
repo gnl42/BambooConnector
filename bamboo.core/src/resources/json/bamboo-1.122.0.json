@@ -9103,6 +9103,15 @@
           "avatarUrl" : {
             "type" : "string",
             "example" : "http://www.example.com/~admin/avatar.png"
+          },
+          "directoryName" : {
+            "type" : "string"
+          },
+          "isActive" : {
+            "type" : "boolean"
+          },
+          "editable" : {
+            "type" : "boolean"
           }
         }
       },
