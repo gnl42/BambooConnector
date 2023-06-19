@@ -7514,6 +7514,12 @@
           "callback" : {
             "$ref" : "#/components/schemas/ListWrapperCallbackRestPlanAction"
           },
+          "action" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/RestPlanAction"
+            }
+          },
           "allElements" : {
             "type" : "array",
             "items" : {
@@ -7524,24 +7530,50 @@
       },
       "RestPlanBranch" : {
         "properties" : {
-          "branchKey" : {
+          "expand" : {
             "type" : "string",
-            "xml" : {
-              "name" : "key",
-              "attribute" : true
-            }
+            "writeOnly" : true
           },
-          "branchName" : {
-            "type" : "string",
-            "xml" : {
-              "name" : "name",
-              "attribute" : true
-            }
+		  "description" : {
+		  	"type" : "string"
+		  },
+          "shortName" : {
+            "type" : "string"
           },
-          "favourite" : {
+		  "shortKey" : {
+              "type" : "string"
+		  },
+		  "enabled" : {
+		    "type" : "boolean"
+		  },
+          "isFavourite" : {
             "type" : "boolean",
             "writeOnly" : true
-          }
+          },
+		  "latestResult" : {
+            "$ref" : "#/components/schemas/Result"
+		  },
+		  "link" : {
+            "$ref" : "#/components/schemas/Link"
+		  },
+		  "master" : {
+			 "$ref" : "#/components/schemas/RestPlan"
+		  },
+		  "workflowType" : {
+            "type" : "string"
+		  },
+		  "divergent" : {
+		    "type" : "boolean"
+		  },
+          "awaitingSpecsExecution" : {
+            "type" : "boolean"
+          },
+		  "key" : {
+            "type" : "string"
+		  },
+		  "name" : {
+            "type" : "string"
+		  }
         }
       },
       "RestPlanBranchList" : {
@@ -7572,7 +7604,7 @@
           "callback" : {
             "$ref" : "#/components/schemas/ListWrapperCallbackRestPlanBranch"
           },
-          "branches" : {
+          "branch" : {
             "type" : "array",
             "xml" : {
               "name" : "branch"
@@ -8833,8 +8865,14 @@
       },
       "RestStage" : {
         "properties" : {
-          "plans" : {
-            "$ref" : "#/components/schemas/RestPlanList"
+          "name" : {
+          	"type" : "string"
+          },
+          "description" : {
+          	"type" : "string"
+          },
+          "manual" : {
+          	"type" : "boolean"
           }
         }
       },
@@ -8866,7 +8904,7 @@
           "callback" : {
             "$ref" : "#/components/schemas/ListWrapperCallbackRestStage"
           },
-          "stages" : {
+          "stage" : {
             "type" : "array",
             "xml" : {
               "name" : "stage"
@@ -9265,6 +9303,59 @@
           }
         }
       },
+      "RestVcsRevision" : {
+        "properties" : {
+          "repositoryId" : {
+            "type" : "string"
+          },
+          "repositoryName" : {
+            "type" : "string"
+          },
+          "vcsRevisionKey" : {
+            "type" : "string"
+          }
+        }
+      },
+      "RestVcsRevisionList" : {
+        "properties" : {
+          "start-index" : {
+            "type" : "integer",
+            "format" : "int32",
+            "xml" : {
+              "name" : "start-index",
+              "attribute" : true
+            }
+          },
+          "max-result" : {
+            "type" : "integer",
+            "format" : "int32",
+            "xml" : {
+              "name" : "max-result",
+              "attribute" : true
+            }
+          },
+          "size" : {
+            "type" : "integer",
+            "format" : "int32",
+            "xml" : {
+              "attribute" : true
+            }
+          },
+          "vcsRevision" : {
+            "type" : "array",
+            "writeOnly" : true,
+            "items" : {
+              "$ref" : "#/components/schemas/RestVcsRevision"
+            }
+          },
+          "allElements" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/RestVcsRevision"
+            }
+          }
+        }
+      },
       "RestVcsLocationSpecsStatus" : {
         "properties" : {
           "inProgress" : {
@@ -9438,6 +9529,9 @@
           "vcsRevisionKey" : {
             "type" : "string",
             "writeOnly" : true
+          },
+          "vcsRevisions" : {
+            "$ref" : "#/components/schemas/RestVcsRevisionList"
           },
           "buildTestSummary" : {
             "type" : "string",
