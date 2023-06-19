@@ -3307,11 +3307,11 @@
       },
       "JsonSearchResultsList" : {
         "properties" : {
-          "startIndex" : {
+          "start-index" : {
             "type" : "integer",
             "format" : "int32"
           },
-          "maxResult" : {
+          "max-result" : {
             "type" : "integer",
             "format" : "int32"
           },
@@ -4508,7 +4508,7 @@
       },
       "RestAgentCapabilities" : {
         "properties" : {
-          "startIndex" : {
+          "start-index" : {
             "type" : "integer",
             "format" : "int32",
             "xml" : {
@@ -4516,7 +4516,7 @@
               "attribute" : true
             }
           },
-          "maxResult" : {
+          "max-result" : {
             "type" : "integer",
             "format" : "int32",
             "xml" : {
@@ -4635,7 +4635,7 @@
       },
       "RestArtifactDefinitionList" : {
         "properties" : {
-          "startIndex" : {
+          "start-index" : {
             "type" : "integer",
             "format" : "int32",
             "xml" : {
@@ -4643,7 +4643,7 @@
               "attribute" : true
             }
           },
-          "maxResult" : {
+          "max-result" : {
             "type" : "integer",
             "format" : "int32",
             "xml" : {
@@ -4724,7 +4724,7 @@
       },
       "RestBranchList" : {
         "properties" : {
-          "startIndex" : {
+          "start-index" : {
             "type" : "integer",
             "format" : "int32",
             "xml" : {
@@ -4732,7 +4732,7 @@
               "attribute" : true
             }
           },
-          "maxResult" : {
+          "max-result" : {
             "type" : "integer",
             "format" : "int32",
             "xml" : {
@@ -4830,7 +4830,7 @@
       },
       "RestBuildArtifactList" : {
         "properties" : {
-          "startIndex" : {
+          "start-index" : {
             "type" : "integer",
             "format" : "int32",
             "xml" : {
@@ -4838,7 +4838,7 @@
               "attribute" : true
             }
           },
-          "maxResult" : {
+          "max-result" : {
             "type" : "integer",
             "format" : "int32",
             "xml" : {
@@ -4900,7 +4900,7 @@
       },
       "RestBuildLabelList" : {
         "properties" : {
-          "startIndex" : {
+          "start-index" : {
             "type" : "integer",
             "format" : "int32",
             "xml" : {
@@ -4908,7 +4908,7 @@
               "attribute" : true
             }
           },
-          "maxResult" : {
+          "max-result" : {
             "type" : "integer",
             "format" : "int32",
             "xml" : {
@@ -5050,7 +5050,7 @@
       },
       "RestChangeFileList" : {
         "properties" : {
-          "startIndex" : {
+          "start-index" : {
             "type" : "integer",
             "format" : "int32",
             "xml" : {
@@ -5058,7 +5058,7 @@
               "attribute" : true
             }
           },
-          "maxResult" : {
+          "max-result" : {
             "type" : "integer",
             "format" : "int32",
             "xml" : {
@@ -5095,7 +5095,7 @@
       },
       "RestChangeList" : {
         "properties" : {
-          "startIndex" : {
+          "start-index" : {
             "type" : "integer",
             "format" : "int32",
             "xml" : {
@@ -5103,7 +5103,7 @@
               "attribute" : true
             }
           },
-          "maxResult" : {
+          "max-result" : {
             "type" : "integer",
             "format" : "int32",
             "xml" : {
@@ -5244,7 +5244,7 @@
       },
       "RestCommentList" : {
         "properties" : {
-          "startIndex" : {
+          "start-index" : {
             "type" : "integer",
             "format" : "int32",
             "xml" : {
@@ -5252,7 +5252,7 @@
               "attribute" : true
             }
           },
-          "maxResult" : {
+          "max-result" : {
             "type" : "integer",
             "format" : "int32",
             "xml" : {
@@ -6163,7 +6163,7 @@
       },
       "RestExecutableEnvironmentList" : {
         "properties" : {
-          "startIndex" : {
+          "start-index" : {
             "type" : "integer",
             "format" : "int32",
             "xml" : {
@@ -6171,7 +6171,7 @@
               "attribute" : true
             }
           },
-          "maxResult" : {
+          "max-result" : {
             "type" : "integer",
             "format" : "int32",
             "xml" : {
@@ -6205,7 +6205,7 @@
       },
       "RestExecutableJobList" : {
         "properties" : {
-          "startIndex" : {
+          "start-index" : {
             "type" : "integer",
             "format" : "int32",
             "xml" : {
@@ -6213,7 +6213,7 @@
               "attribute" : true
             }
           },
-          "maxResult" : {
+          "max-result" : {
             "type" : "integer",
             "format" : "int32",
             "xml" : {
@@ -6363,7 +6363,7 @@
       },
       "RestGlobalVariableList" : {
         "properties" : {
-          "startIndex" : {
+          "start-index" : {
             "type" : "integer",
             "format" : "int32",
             "xml" : {
@@ -6371,7 +6371,7 @@
               "attribute" : true
             }
           },
-          "maxResult" : {
+          "max-result" : {
             "type" : "integer",
             "format" : "int32",
             "xml" : {
@@ -6546,7 +6546,7 @@
       },
       "RestJiraIssueList" : {
         "properties" : {
-          "startIndex" : {
+          "start-index" : {
             "type" : "integer",
             "format" : "int32",
             "xml" : {
@@ -6554,7 +6554,7 @@
               "attribute" : true
             }
           },
-          "maxResult" : {
+          "max-result" : {
             "type" : "integer",
             "format" : "int32",
             "xml" : {
@@ -7407,11 +7407,7 @@
             "type" : "string"
           },
           "planKey" : {
-            "type" : "string",
-            "xml" : {
-              "name" : "key",
-              "attribute" : true
-            }
+            "$ref" : "#/components/schemas/PlanKey"
           },
           "planName" : {
             "type" : "string",
@@ -7492,7 +7488,7 @@
       },
       "RestPlanActionList" : {
         "properties" : {
-          "startIndex" : {
+          "start-index" : {
             "type" : "integer",
             "format" : "int32",
             "xml" : {
@@ -7500,7 +7496,7 @@
               "attribute" : true
             }
           },
-          "maxResult" : {
+          "max-result" : {
             "type" : "integer",
             "format" : "int32",
             "xml" : {
@@ -7550,7 +7546,7 @@
       },
       "RestPlanBranchList" : {
         "properties" : {
-          "startIndex" : {
+          "start-index" : {
             "type" : "integer",
             "format" : "int32",
             "xml" : {
@@ -7558,7 +7554,7 @@
               "attribute" : true
             }
           },
-          "maxResult" : {
+          "max-result" : {
             "type" : "integer",
             "format" : "int32",
             "xml" : {
@@ -7692,7 +7688,7 @@
               "$ref" : "#/components/schemas/RestPlanLabel"
             }
           },
-          "maxResult" : {
+          "max-result" : {
             "type" : "integer",
             "format" : "int32",
             "xml" : {
@@ -7707,7 +7703,7 @@
               "attribute" : true
             }
           },
-          "startIndex" : {
+          "start-index" : {
             "type" : "integer",
             "format" : "int32",
             "xml" : {
@@ -7733,19 +7729,17 @@
       },
       "RestPlanList" : {
         "properties" : {
-          "startIndex" : {
+          "start-index" : {
             "type" : "integer",
             "format" : "int32",
             "xml" : {
-              "name" : "start-index",
               "attribute" : true
             }
           },
-          "maxResult" : {
+          "max-result" : {
             "type" : "integer",
             "format" : "int32",
             "xml" : {
-              "name" : "max-result",
               "attribute" : true
             }
           },
@@ -7759,7 +7753,7 @@
           "callback" : {
             "$ref" : "#/components/schemas/ListWrapperCallbackRestPlan"
           },
-          "plans" : {
+          "plan" : {
             "type" : "array",
             "xml" : {
               "name" : "plan"
@@ -7958,7 +7952,7 @@
       },
       "RestProjectList" : {
         "properties" : {
-          "startIndex" : {
+          "start-index" : {
             "type" : "integer",
             "format" : "int32",
             "xml" : {
@@ -7966,7 +7960,7 @@
               "attribute" : true
             }
           },
-          "maxResult" : {
+          "max-result" : {
             "type" : "integer",
             "format" : "int32",
             "xml" : {
@@ -8098,7 +8092,7 @@
       },
       "RestQueuedBuildList" : {
         "properties" : {
-          "startIndex" : {
+          "start-index" : {
             "type" : "integer",
             "format" : "int32",
             "xml" : {
@@ -8106,7 +8100,7 @@
               "attribute" : true
             }
           },
-          "maxResult" : {
+          "max-result" : {
             "type" : "integer",
             "format" : "int32",
             "xml" : {
@@ -8163,7 +8157,7 @@
       },
       "RestQueuedDeploymentList" : {
         "properties" : {
-          "startIndex" : {
+          "start-index" : {
             "type" : "integer",
             "format" : "int32",
             "xml" : {
@@ -8171,7 +8165,7 @@
               "attribute" : true
             }
           },
-          "maxResult" : {
+          "max-result" : {
             "type" : "integer",
             "format" : "int32",
             "xml" : {
@@ -8304,7 +8298,7 @@
       },
       "RestReportList" : {
         "properties" : {
-          "startIndex" : {
+          "start-index" : {
             "type" : "integer",
             "format" : "int32",
             "xml" : {
@@ -8312,7 +8306,7 @@
               "attribute" : true
             }
           },
-          "maxResult" : {
+          "max-result" : {
             "type" : "integer",
             "format" : "int32",
             "xml" : {
@@ -8399,7 +8393,7 @@
       },
       "RestRepositoryList" : {
         "properties" : {
-          "startIndex" : {
+          "start-index" : {
             "type" : "integer",
             "format" : "int32",
             "xml" : {
@@ -8407,7 +8401,7 @@
               "attribute" : true
             }
           },
-          "maxResult" : {
+          "max-result" : {
             "type" : "integer",
             "format" : "int32",
             "xml" : {
@@ -8532,7 +8526,7 @@
       },
       "RestResourceList" : {
         "properties" : {
-          "startIndex" : {
+          "start-index" : {
             "type" : "integer",
             "format" : "int32",
             "xml" : {
@@ -8540,7 +8534,7 @@
               "attribute" : true
             }
           },
-          "maxResult" : {
+          "max-result" : {
             "type" : "integer",
             "format" : "int32",
             "xml" : {
@@ -8587,7 +8581,7 @@
       },
       "RestResultList" : {
         "properties" : {
-          "startIndex" : {
+          "start-index" : {
             "type" : "integer",
             "format" : "int32",
             "xml" : {
@@ -8595,7 +8589,7 @@
               "attribute" : true
             }
           },
-          "maxResult" : {
+          "max-result" : {
             "type" : "integer",
             "format" : "int32",
             "xml" : {
@@ -8846,7 +8840,7 @@
       },
       "RestStageList" : {
         "properties" : {
-          "startIndex" : {
+          "start-index" : {
             "type" : "integer",
             "format" : "int32",
             "xml" : {
@@ -8854,7 +8848,7 @@
               "attribute" : true
             }
           },
-          "maxResult" : {
+          "max-result" : {
             "type" : "integer",
             "format" : "int32",
             "xml" : {
@@ -8898,7 +8892,7 @@
       },
       "RestStageResultList" : {
         "properties" : {
-          "startIndex" : {
+          "start-index" : {
             "type" : "integer",
             "format" : "int32",
             "xml" : {
@@ -8906,7 +8900,7 @@
               "attribute" : true
             }
           },
-          "maxResult" : {
+          "max-result" : {
             "type" : "integer",
             "format" : "int32",
             "xml" : {
@@ -9179,7 +9173,7 @@
               "attribute" : true
             }
           },
-          "startIndex" : {
+          "start-index" : {
             "type" : "integer",
             "format" : "int32",
             "xml" : {
@@ -9197,7 +9191,7 @@
       },
       "RestVariableList" : {
         "properties" : {
-          "startIndex" : {
+          "start-index" : {
             "type" : "integer",
             "format" : "int32",
             "xml" : {
@@ -9205,7 +9199,7 @@
               "attribute" : true
             }
           },
-          "maxResult" : {
+          "max-result" : {
             "type" : "integer",
             "format" : "int32",
             "xml" : {
@@ -9870,7 +9864,7 @@
       },
       "SearchResultsList" : {
         "properties" : {
-          "startIndex" : {
+          "start-index" : {
             "type" : "integer",
             "format" : "int32",
             "xml" : {
@@ -9878,7 +9872,7 @@
               "attribute" : true
             }
           },
-          "maxResult" : {
+          "max-result" : {
             "type" : "integer",
             "format" : "int32",
             "xml" : {
@@ -26367,12 +26361,12 @@
     "/api/latest/plan" : {
       "get" : {
         "tags" : [ "Build" ],
-        "description" : "List all plans that user has READ permission for and allowed to see.\n\nPossible expand parameters:\n\n- <tt>plans</tt> - list of plans\n\n- <tt>plans.plan</tt> - list of plans with plan details\n\n- <tt>plans.plan.actions</tt> - list of plans with actions details",
+        "description" : "List all plans that user has READ permission for and allowed to see.\n\nPossible expand parameters:\n\n- <tt>plans</tt> - list of plans\n\n- <tt>plans.plan</tt> - list of plans with plan details\n\n- <tt>plans.plan.actions</tt> - list of plans with actions details\n\n- <tt>plans.plan.s</tt> - list of plans with stages details\n\n- <tt>plans.plan.branches</tt> - list of plans with brnach details",
         "operationId" : "getAllPlanList",
         "parameters" : [ {
           "name" : "expand",
           "in" : "query",
-          "description" : "Possible expand parameters: plans.",
+          "description" : "Possible expand parameters: plans,plans.plan,plans.plan.actions,plans.plan.stages,plans.plan.branches",
           "schema" : {
             "type" : "string"
           }
