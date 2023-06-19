@@ -11,10 +11,10 @@
     "version" : "9.3.0"
   },
   "servers" : [ {
-    "url" : "http://{baseurl}/rest/",
+    "url" : "https://{baseurl}/rest/",
     "variables" : {
       "baseurl" : {
-        "default" : "example.com:8085",
+        "default" : "192.168.0.120:9683",
         "description" : "Bamboo URL"
       }
     }
