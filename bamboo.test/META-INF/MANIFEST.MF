@@ -6,8 +6,5 @@ Bundle-SymbolicName: bamboo.test
 Bundle-Version: 1.0.0.qualifier
 Fragment-Host: bamboo.core;bundle-version="1.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-17
-Require-Bundle: junit-jupiter-api,
- org.slf4j.api
+Require-Bundle: junit-jupiter-api
 Automatic-Module-Name: bamboo.test
-Bundle-ClassPath: .,
- target/lib/log4j-slf4j2-impl.jar

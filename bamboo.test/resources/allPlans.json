@@ -1,0 +1,63 @@
+{
+  "expand": "plans",
+  "link": {
+    "href": "http://192.168.0.120:9680/rest/api/latest/plan",
+    "rel": "self"
+  },
+  "plans": {
+    "size": 1,
+    "expand": "plan",
+    "start-index": 0,
+    "max-result": 1,
+    "plan": [
+      {
+        "expand": "actions,stages,branches",
+        "projectKey": "MYL9",
+        "projectName": "Mylyn9",
+        "project": {
+          "key": "MYL9",
+          "name": "Mylyn9",
+          "description": "Testing Mylyn integration",
+          "link": {
+            "href": "http://192.168.0.120:9680/rest/api/latest/project/MYL9",
+            "rel": "self"
+          }
+        },
+        "description": "Plan for testing bamboo connector",
+        "shortName": "Connector",
+        "buildName": "Connector",
+        "shortKey": "CON9",
+        "type": "chain",
+        "enabled": true,
+        "link": {
+          "href": "http://192.168.0.120:9680/rest/api/latest/plan/MYL9-CON9",
+          "rel": "self"
+        },
+        "isFavourite": false,
+        "isActive": false,
+        "isBuilding": false,
+        "averageBuildTimeInSeconds": 36,
+        "actions": {
+          "size": 1,
+          "start-index": 0,
+          "max-result": 1
+        },
+        "stages": {
+          "size": 1,
+          "start-index": 0,
+          "max-result": 1
+        },
+        "branches": {
+          "size": 0,
+          "start-index": 0,
+          "max-result": 0
+        },
+        "key": "MYL9-CON9",
+        "name": "Mylyn9 - Connector",
+        "planKey": {
+          "key": "MYL9-CON9"
+        }
+      }
+    ]
+  }
+}

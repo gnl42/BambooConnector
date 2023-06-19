@@ -8,27 +8,27 @@
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<properties>
-		<tycho.version>3.0.3</tycho.version>
+		<tycho.version>3.0.4</tycho.version>
 		<sonar.exclusions>**/src-gen/**</sonar.exclusions>
 		<env.ui.test>-Xms512m -Xmx2048m</env.ui.test>
 	</properties>
 	<repositories>
+		<repository>
+			<id>eclipse</id>
+			<url>https://download.eclipse.org/releases/latest</url>
+			<layout>p2</layout>
+		</repository>
 <!--		<repository>-->
-<!--			<id>eclipse</id>-->
-<!--			<url>https://download.eclipse.org/releases/latest</url>-->
+<!--			<id>orbit</id>-->
+<!--			<url>-->
+<!--				https://download.eclipse.org/tools/orbit/downloads/drops/R20230302014618/repository</url>-->
 <!--			<layout>p2</layout>-->
 <!--		</repository>-->
-		<repository>
-			<id>orbit</id>
-			<url>
-				https://download.eclipse.org/tools/orbit/downloads/drops/R20230302014618/repository</url>
-			<layout>p2</layout>
-		</repository>
-		<repository>
-			<id>mylyn</id>
-			<url>https://download.eclipse.org/mylyn/snapshots/nightly/mylyn/</url>
-			<layout>p2</layout>
-		</repository>
+<!--		<repository>-->
+<!--			<id>mylyn</id>-->
+<!--			<url>https://download.eclipse.org/mylyn/snapshots/nightly/mylyn/</url>-->
+<!--			<layout>p2</layout>-->
+<!--		</repository>-->
 	</repositories>
 	<build>
 		<pluginManagement>
@@ -51,7 +51,7 @@
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>build-helper-maven-plugin</artifactId>
-					<version>3.3.0</version>
+					<version>3.4.0</version>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
