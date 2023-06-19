@@ -4820,7 +4820,7 @@
             "$ref" : "#/components/schemas/Link"
           },
           "producerJobKey" : {
-            "$ref" : "#/components/schemas/PlanResultKey"
+            "type" : "string"
           },
           "shared" : {
             "type" : "boolean",
@@ -4865,7 +4865,7 @@
           "callback" : {
             "$ref" : "#/components/schemas/ListWrapperCallbackRestBuildArtifact"
           },
-          "artifacts" : {
+          "artifact" : {
             "type" : "array",
             "writeOnly" : true,
             "items" : {
@@ -8648,7 +8648,7 @@
           "callback" : {
             "$ref" : "#/components/schemas/ListWrapperCallbackResult"
           },
-          "results" : {
+          "result" : {
             "type" : "array",
             "xml" : {
               "name" : "result"
@@ -9280,7 +9280,7 @@
           "callback" : {
             "$ref" : "#/components/schemas/ListWrapperCallbackRestVariable"
           },
-          "variables" : {
+          "variable" : {
             "type" : "array",
             "writeOnly" : true,
             "items" : {
