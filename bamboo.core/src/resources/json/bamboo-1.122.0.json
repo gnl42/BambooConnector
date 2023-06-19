@@ -7450,8 +7450,8 @@
             "$ref" : "#/components/schemas/Link"
           },
           "averageBuildTimeInSeconds" : {
-            "type" : "number",
-            "format" : "double"
+            "type" : "integer",
+            "format" : "int32"
           },
           "actions" : {
             "$ref" : "#/components/schemas/RestPlanActionList"
@@ -7465,16 +7465,16 @@
           "variableContext" : {
             "$ref" : "#/components/schemas/RestVariableDefinitionContextList"
           },
-          "favourite" : {
+          "isFavourite" : {
             "type" : "boolean"
           },
           "currentRestUser" : {
             "$ref" : "#/components/schemas/User"
           },
-          "building" : {
+          "isBuilding" : {
             "type" : "boolean"
           },
-          "active" : {
+          "isActive" : {
             "type" : "boolean"
           }
         }
@@ -9187,9 +9187,10 @@
             "type" : "string"
           },
           "variableType" : {
-            "type" : "string"
+            "type" : "string",
+            "enum" : [ "GLOBAL", "PLAN", "JOB", "MANUAL", "CUSTOM", "SYSTEM", "UNKNOWN", "ENVIRONMENT", "VERSION", "RESULT", "PROJECT" ]
           },
-          "password" : {
+          "isPassword" : {
             "type" : "boolean"
           }
         }
@@ -9203,7 +9204,7 @@
               "attribute" : true
             }
           },
-          "maxResults" : {
+          "max-results" : {
             "type" : "integer",
             "format" : "int32",
             "xml" : {
@@ -9217,6 +9218,12 @@
             "xml" : {
               "name" : "start-index",
               "attribute" : true
+            }
+          },
+          "variable" : {
+            "type" : "array",
+            "items" : {
+                "$ref" : "#/components/schemas/RestVariableDefinitionContext"
             }
           },
           "pagingCallback" : {
