@@ -4764,7 +4764,16 @@
           }
         }
       },
-      "RestBranches" : { },
+      "RestBranches" : {
+        "properties" : {
+          "link" : {
+            "$ref" : "#/components/schemas/Link"
+          },
+          "branches" : {
+            "$ref" : "#/components/schemas/RestPlanBranchList"
+          }
+        }
+      },
       "RestBruteForceProtection" : {
         "properties" : {
           "enabled" : {
