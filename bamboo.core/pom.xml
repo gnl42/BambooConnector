@@ -60,7 +60,8 @@
 						<developerName>George Lindholm</developerName>
 						<developerEmail>javadev@glindholm.me</developerEmail>
 						<developerOrganization>self</developerOrganization>
-						<serializableModel>false</serializableModel>
+						<serializableModel>true</serializableModel>
+                        <useJakartaEe>true</useJakartaEe>
 					</configOptions>
 					<verbose>false</verbose>
 					<httpUserAgent>Bamboo Client ${project.version}</httpUserAgent>
@@ -109,7 +110,7 @@
 							<includeArtifactIds>jettison,jdom,jaxen,
 								jackson-core,jackson-databind,jackson-annotations,
 								jackson-datatype-jsr310,jackson-databind-nullable,
-								swagger-annotations,jsr305,javax.annotation-api,
+								swagger-annotations,jsr305,jakarta.annotation-api,
 								commons-lang3
 							</includeArtifactIds>
 							<outputDirectory>target/lib</outputDirectory>
@@ -162,17 +163,11 @@
 			<artifactId>jackson-datatype-jsr310</artifactId>
 			<version>${jackson-version}</version>
 		</dependency>
-		<dependency>
-			<groupId>jakarta.annotation</groupId>
-			<artifactId>jakarta.annotation-api</artifactId>
-			<version>${jakarta-annotation-version}</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>javax.annotation</groupId>
-			<artifactId>javax.annotation-api</artifactId>
-			<version>1.3.2</version>
-		</dependency>
+<dependency>
+    <groupId>jakarta.annotation</groupId>
+    <artifactId>jakarta.annotation-api</artifactId>
+    <version>2.1.1</version>
+</dependency>
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>

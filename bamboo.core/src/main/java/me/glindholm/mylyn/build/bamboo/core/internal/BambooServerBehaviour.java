@@ -31,10 +31,10 @@ import me.glindholm.mylyn.build.bamboo.core.internal.client.BambooConfigurationC
 import me.glindholm.mylyn.build.bamboo.core.internal.client.BambooException;
 import me.glindholm.mylyn.build.bamboo.core.internal.client.BambooRestClient;
 import me.glindholm.mylyn.build.bamboo.invoker.ApiException;
-import me.glindholm.mylyn.build.bamboo.model.BuildPlan;
-import me.glindholm.mylyn.build.bamboo.model.BuildPlans;
-import me.glindholm.mylyn.build.bamboo.model.BuildResult;
-import me.glindholm.mylyn.build.bamboo.model.ServerInfo;
+import me.glindholm.mylyn.build.bamboo.model.RestInfo;
+import me.glindholm.mylyn.build.bamboo.model.RestPlan;
+import me.glindholm.mylyn.build.bamboo.model.RestPlans;
+import me.glindholm.mylyn.build.bamboo.model.Result;
 
 public class BambooServerBehaviour extends BuildServerBehaviour {
 
@@ -51,11 +51,11 @@ public class BambooServerBehaviour extends BuildServerBehaviour {
         final List<IBuildPlan> plans = new ArrayList<>();
         if (client.isInitialized()) {
             try {
-                final BuildPlans bambooPlans = client.getPlans();
-                for (final BuildPlan bambooPlan : bambooPlans.getPlans().getPlan()) {
+                final RestPlans bambooPlans = client.getPlans();
+				for (final RestPlan bambooPlan : bambooPlans.getPlans().getPlan()) {
                     final IBuildPlan plan = createBuildPlan();
-                    plan.setId(bambooPlan.getKey());
-                    plan.setName(bambooPlan.getName());
+                    plan.setId(bambooPlan.getPlanKey().getKey());
+                    plan.setName(bambooPlan.getPlanName());
                     plan.setDescription(bambooPlan.getDescription());
                     plans.add(plan);
 
@@ -73,7 +73,7 @@ public class BambooServerBehaviour extends BuildServerBehaviour {
             if (request.getKind() == Kind.LAST || request.getKind() == Kind.SELECTED) {
                 final IBuildPlan plan = request.getPlan();
 
-                final BuildResult result = client.getBuildResult(plan.getId(), 0);
+                final Result result = client.getBuildResult(plan.getId(), 0);
 //                        request.getKind() == Kind.LAST ? 0 : Integer.parseInt(request.getIds().iterator().next()));
                 final IBuild build = createBuild();
                 build.setDuration(result.getBuildDurationInSeconds());
@@ -120,15 +120,15 @@ public class BambooServerBehaviour extends BuildServerBehaviour {
         final List<IBuildPlan> plans = new ArrayList<>(request.getPlanIds().size());
         try {
             for (final String planId : request.getPlanIds()) {
-                final BuildPlan bambooPlan = client.getPlan(planId);
+                final RestPlan bambooPlan = client.getPlan(planId);
                 final IBuildPlan plan = createBuildPlan();
 
-                plan.setId(bambooPlan.getKey());
-                plan.setName(bambooPlan.getName());
+                plan.setId(bambooPlan.getPlanKey().getKey());
+                plan.setName(bambooPlan.getPlanName());
                 plan.setDescription(bambooPlan.getDescription());
                 plan.setUrl(bambooPlan.getLink().getHref().toString());
                 plan.setState(bambooPlan.getIsBuilding() ? BuildState.RUNNING : BuildState.STOPPED);
-                final BuildResult bambooBuild = client.getBuildResult(planId, 0);
+                final Result bambooBuild = client.getBuildResult(planId, 0);
                 final IBuild build = createBuild();
                 build.setId(bambooBuild.getBuildNumber() + "");
                 // build.setLabel(bambooBuild.getLabels().getLabel().get(0));
@@ -162,7 +162,7 @@ public class BambooServerBehaviour extends BuildServerBehaviour {
     @Override
     public IStatus validate(final IOperationMonitor monitor) throws CoreException {
         try {
-            final ServerInfo info = client.validate(monitor);
+            final RestInfo info = client.validate(monitor);
             final BambooStatus status = new BambooStatus(IStatus.OK, BambooCorePlugin.ID_PLUGIN,
                     NLS.bind(Messages.BambooServerBehaviour_Validation_succesful, info.getVersion()));
             status.setInfo(info);

@@ -18,6 +18,7 @@ import me.glindholm.mylyn.build.bamboo.api.ResourceApi;
 import me.glindholm.mylyn.build.bamboo.api.UserManagementApi;
 import me.glindholm.mylyn.build.bamboo.invoker.ApiClient;
 import me.glindholm.mylyn.build.bamboo.invoker.ApiException;
+import me.glindholm.mylyn.build.bamboo.invoker.ApiResponse;
 import me.glindholm.mylyn.build.bamboo.model.GetUsers200Response;
 import me.glindholm.mylyn.build.bamboo.model.RestInfo;
 import me.glindholm.mylyn.build.bamboo.model.RestPlan;
@@ -29,7 +30,7 @@ import me.glindholm.mylyn.build.bamboo.model.RestResultsResults;
 import me.glindholm.mylyn.build.bamboo.model.Result;
 import me.glindholm.mylyn.build.bamboo.model.UserBean;
 
-public class BambooTester {
+public class BambooTester9 {
     static ApiClient apiClient;
 
     @BeforeAll
@@ -37,7 +38,7 @@ public class BambooTester {
         apiClient = new ApiClient();
         final ObjectMapper mapper = apiClient.getObjectMapper();
         mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
-        apiClient.updateBaseUri("https://192.168.0.120:9483/rest");
+        apiClient.updateBaseUri("https://192.168.0.120:9683/rest");
         apiClient.setRequestInterceptor(authorize -> authorize.header("Authorization", basicAuth("gnl", System.getenv("PW"))));
 
     }
@@ -266,7 +267,7 @@ public class BambooTester {
     		Integer maxResults = null;
     		Integer startIndex = null;
     		String projectKey = "AP-CON5";
-    		RestResultsResults res = def.getLatestBuildResultsForProject(projectKey, includeAllStates, contnuable, expand, null, maxResults, startIndex, label, buildState, favourite, favourite).get();
+			RestResultsResults res = def.getLatestBuildResultsForProject(projectKey, includeAllStates, contnuable, expand, null, maxResults, startIndex, label, buildState, favourite, favourite).get();
             System.out.println( res);
         } catch (InterruptedException | ExecutionException | ApiException e) {
             if (e.getCause() != null && e.getCause() instanceof ApiException) {

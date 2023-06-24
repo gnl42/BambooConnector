@@ -2,11 +2,11 @@ package me.glindholm.mylyn.build.bamboo.core.internal;
 
 import org.eclipse.core.runtime.Status;
 
-import me.glindholm.mylyn.build.bamboo.model.ServerInfo;
+import me.glindholm.mylyn.build.bamboo.model.RestInfo;
 
 public class BambooStatus extends Status {
 
-    private ServerInfo info;
+    private RestInfo info;
 
     public BambooStatus(final int severity, final String pluginId, final String message) {
         super(severity, pluginId, message);
@@ -20,11 +20,11 @@ public class BambooStatus extends Status {
         super(severity, pluginId, code, message, exception);
     }
 
-    void setInfo(final ServerInfo info) {
+    void setInfo(final RestInfo info) {
         this.info = info;
     }
 
-    public ServerInfo getInfo() {
+    public RestInfo getInfo() {
         return info;
     }
 

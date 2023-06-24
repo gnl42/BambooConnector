@@ -25,11 +25,11 @@ import me.glindholm.mylyn.build.bamboo.api.BuildApi;
 import me.glindholm.mylyn.build.bamboo.api.DefaultApi;
 import me.glindholm.mylyn.build.bamboo.invoker.ApiClient;
 import me.glindholm.mylyn.build.bamboo.invoker.ApiException;
-import me.glindholm.mylyn.build.bamboo.invoker.ApiResponse;
-import me.glindholm.mylyn.build.bamboo.model.BuildPlan;
-import me.glindholm.mylyn.build.bamboo.model.BuildPlans;
-import me.glindholm.mylyn.build.bamboo.model.BuildResult;
-import me.glindholm.mylyn.build.bamboo.model.ServerInfo;
+import me.glindholm.mylyn.build.bamboo.model.RestInfo;
+import me.glindholm.mylyn.build.bamboo.model.RestPlan;
+import me.glindholm.mylyn.build.bamboo.model.RestPlans;
+import me.glindholm.mylyn.build.bamboo.model.RestResultsResults;
+import me.glindholm.mylyn.build.bamboo.model.Result;
 
 public class BambooRestClient {
 
@@ -80,33 +80,34 @@ public class BambooRestClient {
         return "Bearer " + token;
     }
 
-    public ServerInfo validate(final IOperationMonitor monitor) throws InterruptedException, ExecutionException, ApiException {
+    public RestInfo validate(final IOperationMonitor monitor) throws InterruptedException, ExecutionException, ApiException {
         createClient(location);
 
         return new DefaultApi(client).getInfo().get();
     }
 
-    public BuildPlans getPlans() throws InterruptedException, ExecutionException, ApiException {
-        return new BuildApi(getClient()).getAllPlanList("plans", null, 5000).get();
+    public  RestPlans getPlans() throws InterruptedException, ExecutionException, ApiException {
+        return new BuildApi(getClient()).getAllPlanList("plans").get();
     }
 
-    public BuildPlan getPlan(final String planId) throws InterruptedException, ExecutionException, ApiException {
+    public  RestPlan getPlan(final String planId) throws InterruptedException, ExecutionException, ApiException {
         return new BuildApi(getClient()).getPlan(planId, "", null).get();
     }
 
-    public BuildResult getBuildResult(final String planId, final int i) throws InterruptedException, ExecutionException, ApiException {
-        final ApiResponse<BuildResult> result = new DefaultApi(getClient()).getLatestBuildResultForProjectWithHttpInfo(planId,
-                "changes,changes.change,changes.change.files,comments,comments.comment,labels,stages.stage[0],stages.stage[0].results.result.testResults.allTests.testResult.errors,stages.stage.results.result.testResults.failedTests.testResult.errors",
-                null, null, null, null, null, null, null, null, null).get();
-        return result.getData();
+    public  Result getBuildResult(final String planId, final int i) throws InterruptedException, ExecutionException, ApiException {
+        String expand = String.join(",","results.result.stages.stage");
+        DefaultApi def = new DefaultApi(getClient());
+		RestResultsResults result = def.getLatestBuildResultsForProject(planId, null, null, expand, null, null, null, null, null, null, null).get();
+		return result.getResults().getResult().get(0);
     }
 
     public Reader getLogfile(final String planId, final IOperationMonitor monitor)
             throws InterruptedException, ExecutionException, ApiException, MalformedURLException, IOException, URISyntaxException {
 
-        final BuildResult result = new DefaultApi(getClient())
-                .getLatestBuildResultForProject(planId, "stages.stage.results.result", null, null, null, null, null, null, null, null, null).get();
-        final String logFile = result.getStages().getStage().get(0).getResults().getResult().get(0).getLogFiles().get(0);
+        DefaultApi def = new DefaultApi(getClient());
+        String expand = String.join(",","results.result.stages.stage");
+		RestResultsResults result = def.getLatestBuildResultsForProject(planId, null, null, expand, null, null, null, null, null, null, null).get();
+        final String logFile = result.getResults().getResult().get(0).getLogFiles().get(0);
 
         final HttpRequest request = HttpRequest.newBuilder() //
                 .GET() //

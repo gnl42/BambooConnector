@@ -7,10 +7,12 @@ Bundle-Version: 1.0.0.qualifier
 Require-Bundle: bamboo.core,
  org.eclipse.ui,
  org.eclipse.core.runtime,
- org.eclipse.mylyn.builds.core,
- org.eclipse.mylyn.builds.ui,
- org.eclipse.mylyn.commons.repositories.core,
- org.eclipse.mylyn.commons.repositories.ui
+ org.eclipse.mylyn.builds.core;bundle-version="3.26.1",
+ org.eclipse.mylyn.builds.ui;bundle-version="3.26.1",
+ org.eclipse.mylyn.commons.repositories.core;bundle-version="3.26.1",
+ org.eclipse.mylyn.commons.repositories.ui;bundle-version="3.26.1",
+ org.eclipse.mylyn.commons.core;bundle-version="3.26.1",
+ org.eclipse.mylyn.commons.notifications.ui;bundle-version="3.26.1"
 Bundle-RequiredExecutionEnvironment: JavaSE-17
 Automatic-Module-Name: bamboo.ui
 Bundle-ActivationPolicy: lazy

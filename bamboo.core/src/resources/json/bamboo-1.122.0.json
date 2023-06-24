@@ -1,5 +1,5 @@
 {
-  "openapi" : "3.0.1",
+  "openapi" : "3.0.3",
   "info" : {
     "title" : "Bamboo",
     "description" : "This is the reference document for the Atlassian Bamboo REST API. The REST API is for developers who want to: \n\n - integrate Bamboo with other applications;\n\n - create scripts that interact with Bamboo; or\n\n - develop plugins that enhance the Bamboo UI, using REST to interact with the backend. \n\n You can read more about developing Bamboo plugins in the [Bamboo Developer Documentation](https://developer.atlassian.com/bamboo/server/docs/latest/).",
@@ -1270,6 +1270,28 @@
           },
           "name" : {
             "type" : "string"
+          }
+        }
+      },
+      "CommitFileList" : {
+        "properties" : {
+          "start-index" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "max-result" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "size" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "file" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/CommitFile"
+            }
           }
         }
       },
@@ -4834,6 +4856,9 @@
           "prettySizeDescription" : {
             "type" : "string",
             "writeOnly" : true
+          },
+          "id" : {
+            "type" : "string"
           }
         }
       },
@@ -6547,6 +6572,20 @@
           "status" : {
             "type" : "string",
             "writeOnly" : true
+          },
+          "statusClass" : {
+            "type" : "string",
+            "writeOnly" : true
+          },
+          "assignee" : {
+            "type" : "string",
+            "writeOnly" : true
+          },
+          "fixVersions" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
           },
           "url" : {
             "$ref" : "#/components/schemas/Link"
@@ -8685,9 +8724,19 @@
           }
         }
       },
-      "RestResults" : {
+      "RestResultsResults" : {
         "properties" : {
           "results" : {
+            "$ref" : "#/components/schemas/RestResultList"
+          },
+          "link" : {
+            "$ref" : "#/components/schemas/Link"
+          }
+        }
+      },
+      "RestResults" : {
+        "properties" : {
+          "result" : {
             "$ref" : "#/components/schemas/RestResultList"
           },
           "expand" : {
@@ -8965,7 +9014,7 @@
           "callback" : {
             "$ref" : "#/components/schemas/ListWrapperCallbackRestStageResult"
           },
-          "stages" : {
+          "stage" : {
             "type" : "array",
             "items" : {
               "$ref" : "#/components/schemas/RestStageResult"
@@ -8990,6 +9039,186 @@
             "type" : "integer",
             "format" : "int32",
             "example" : 25
+          }
+        }
+      },
+      "TestResult" : {
+        "properties" : {
+            "testCaseId" : {
+              "type" : "string"
+            },
+            "className" : {
+              "type" : "string"
+            },
+            "methodName" : {
+              "type" : "string"
+            },
+            "status" : {
+              "type" : "string"
+            },
+            "duration" : {
+              "type" : "integer",
+              "format" : "int64",
+              "readOnly" : true
+            },
+            "durationInSeconds" : {
+              "type" : "integer",
+              "format" : "int64",
+              "readOnly" : true
+            },
+            "errors" : {
+              "$ref" : "#/components/schemas/TestResultErrorsList"
+            }
+        }
+      },
+      "TestResultErrorsList" : {
+        "properties" : {
+          "size" : {
+            "type" : "integer",
+            "format" : "int32",
+            "xml" : {
+              "attribute" : true
+            }
+          },
+          "max-result" : {
+            "type" : "integer",
+            "format" : "int32",
+            "xml" : {
+               "attribute" : true
+            }
+          },
+          "start-index" : {
+            "type" : "integer",
+            "format" : "int32",
+            "xml" : {
+              "attribute" : true
+            }
+          },
+          "error" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/TestResultError"
+            }
+          }
+        }
+      },
+      "TestResultError" : {
+        "properties" : {
+            "message" : {
+              "type" : "string"
+            }
+        }
+      },
+      "TestResultErrors" : {
+        "properties" : {
+          "duration" : {
+            "type" : "integer",
+            "format" : "int64"
+          },
+          "error" : {
+            "type" : "array",
+            "items" : {
+
+            }
+          }
+        }
+      },
+      "TestResultsResultList" : {
+        "properties" : {
+          "size" : {
+            "type" : "integer",
+            "format" : "int32",
+            "xml" : {
+              "attribute" : true
+            }
+          },
+          "max-result" : {
+            "type" : "integer",
+            "format" : "int32",
+            "xml" : {
+               "attribute" : true
+            }
+          },
+          "start-index" : {
+            "type" : "integer",
+            "format" : "int32",
+            "xml" : {
+              "attribute" : true
+            }
+          },
+          "testResult" : {
+            "type" : "array",
+            "items" : {
+               "$ref" : "#/components/schemas/TestResult"
+             }
+          }
+        }
+      },
+      "TestResults" : {
+        "properties" : {
+          "all" : {
+            "type" : "integer",
+            "format" : "int64",
+            "readOnly" : true
+          },
+          "successful" : {
+            "type" : "integer",
+            "format" : "int64",
+            "readOnly" : true
+          },
+          "failed" : {
+            "type" : "integer",
+            "format" : "int64",
+            "readOnly" : true
+          },
+          "newFailed" : {
+            "type" : "integer",
+            "format" : "int64",
+            "readOnly" : true
+          },
+          "existingFailed" : {
+            "type" : "integer",
+            "format" : "int64",
+            "readOnly" : true
+          },
+          "fixed" : {
+            "type" : "integer",
+            "format" : "int64",
+            "readOnly" : true
+          },
+          "quarantined" : {
+            "type" : "integer",
+            "format" : "int64",
+            "readOnly" : true
+          },
+          "skipped" : {
+            "type" : "integer",
+            "format" : "int64",
+            "readOnly" : true
+          },
+          "allTests" : {
+            "$ref" : "#/components/schemas/TestResultsResultList"
+          },
+          "successfulTests" : {
+            "$ref" : "#/components/schemas/TestResultsResultList"
+          },
+          "failedTests" : {
+            "$ref" : "#/components/schemas/TestResultsResultList"
+          },
+          "newFailedTests" : {
+            "$ref" : "#/components/schemas/TestResultsResultList"
+          },
+          "existingFailedTests" : {
+            "$ref" : "#/components/schemas/TestResultsResultList"
+          },
+          "fixedTests" : {
+            "$ref" : "#/components/schemas/TestResultsResultList"
+          },
+          "quarantinedTests" : {
+            "$ref" : "#/components/schemas/TestResultsResultList"
+          },
+          "skippedTests" : {
+            "$ref" : "#/components/schemas/TestResultsResultList"
           }
         }
       },
@@ -9222,11 +9451,11 @@
               "attribute" : true
             }
           },
-          "max-results" : {
+          "max-result" : {
             "type" : "integer",
             "format" : "int32",
             "xml" : {
-              "name" : "max-results",
+              "name" : "max-result",
               "attribute" : true
             }
           },
@@ -9448,7 +9677,6 @@
           "buildState" : {
             "type" : "string",
             "xml" : {
-              "name" : "state",
               "attribute" : true
             }
           },
@@ -9603,6 +9831,12 @@
             "type" : "string",
             "writeOnly" : true
           },
+          "reasonSummary" : {
+            "type" : "string"
+          },
+          "specsResult": {
+            "type" : "boolean"
+          },
           "hasExecutableAgents" : {
             "type" : "boolean",
             "writeOnly" : true
@@ -9622,6 +9856,34 @@
           "variables" : {
             "$ref" : "#/components/schemas/RestVariableList"
           },
+          "logFiles" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          },
+          "changes" : {
+             "$ref" : "#/components/schemas/ResultChangeList"
+          },
+          "testResults" : {
+            "$ref" : "#/components/schemas/TestResults"
+          },
+          "metadata" : {
+            "$ref" : "#/components/schemas/ResultMetadataList"
+          },
+          "parent" : {
+            "$ref" : "#/components/schemas/Link"
+          },
+          "key" : {
+            "type" : "string"
+          },
+          "state" : {
+            "type" : "string"
+          },
+          "number" : {
+            "type" : "integer",
+            "format" : "int64"
+          },
           "stages" : {
             "$ref" : "#/components/schemas/RestStageResultList"
           },
@@ -9630,6 +9892,60 @@
           },
           "buildSummary" : {
             "$ref" : "#/components/schemas/ImmutableResultsSummary"
+          }
+        }
+      },
+      "ResultChange" : {
+        "properties" : {
+          "author" : {
+            "type" : "string"
+          },
+          "comment" : {
+            "type" : "string"
+          },
+          "changesetId" : {
+            "type" : "string"
+          },
+          "commitUrl" : {
+            "type" : "string"
+          },
+          "date" : {
+            "type" : "string",
+            "format" : "date-time"
+          },
+          "files" : {
+            "$ref" : "#/components/schemas/CommitFileList"
+          }
+        }
+      },
+      "ResultChangeList" : {
+        "properties" : {
+          "size" : {
+            "type" : "integer",
+            "format" : "int32",
+            "xml" : {
+              "attribute" : true
+            }
+          },
+          "max-result" : {
+            "type" : "integer",
+            "format" : "int32",
+            "xml" : {
+               "attribute" : true
+            }
+          },
+          "start-index" : {
+            "type" : "integer",
+            "format" : "int32",
+            "xml" : {
+              "attribute" : true
+            }
+          },
+          "change" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/ResultChange"
+            }
           }
         }
       },
@@ -9647,6 +9963,47 @@
             "format" : "int64"
           },
           "key" : {
+            "type" : "string"
+          }
+        }
+      },
+      "ResultMetadataList" : {
+        "properties" : {
+          "size" : {
+            "type" : "integer",
+            "format" : "int32",
+            "xml" : {
+              "attribute" : true
+            }
+          },
+          "max-result" : {
+            "type" : "integer",
+            "format" : "int32",
+            "xml" : {
+               "attribute" : true
+            }
+          },
+          "start-index" : {
+            "type" : "integer",
+            "format" : "int32",
+            "xml" : {
+              "attribute" : true
+            }
+          },
+          "item" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/ResultMetadataItem"
+            }
+          }
+        }
+      },
+      "ResultMetadataItem" : {
+        "properties" : {
+          "key" : {
+            "type" : "string"
+          },
+          "value" : {
             "type" : "string"
           }
         }
@@ -23760,7 +24117,7 @@
             "type" : "string"
           }
         }, {
-          "name" : "max-results",
+          "name" : "max-result",
           "in" : "query",
           "description" : "maximum size for returned list",
           "schema" : {
@@ -23810,7 +24167,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/RestResults"
+                  "$ref" : "#/components/schemas/RestResultsResults"
                 }
               }
             }
@@ -23859,7 +24216,7 @@
             "type" : "string"
           }
         }, {
-          "name" : "max-results",
+          "name" : "max-result",
           "in" : "query",
           "description" : "Maximum size for returned list",
           "schema" : {
@@ -23909,7 +24266,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/RestResults"
+                  "$ref" : "#/components/schemas/RestResultsResults"
                 }
               }
             }
@@ -24018,7 +24375,7 @@
             "type" : "string"
           }
         }, {
-          "name" : "max-results",
+          "name" : "max-result",
           "in" : "query",
           "description" : "Maximum size for returned list",
           "schema" : {
@@ -24122,7 +24479,7 @@
             "type" : "string"
           }
         }, {
-          "name" : "max-results",
+          "name" : "max-result",
           "in" : "query",
           "description" : "Maximum size for returned list",
           "schema" : {

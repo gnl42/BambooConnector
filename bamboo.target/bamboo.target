@@ -3,46 +3,74 @@
 <!-- generated with https://github.com/mbarbero/fr.obeo.releng.targetplatform --><target name="Eclipse latest" sequenceNumber="1506582696">
 	<locations>
 		<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
-			<unit id="org.eclipse.platform.feature.group" version="0.0.0"/>
-			<unit id="org.eclipse.rcp.feature.group" version="0.0.0"/>
-			<unit id="org.eclipse.jdt.feature.group" version="0.0.0"/>
-			<unit id="org.eclipse.equinox.p2.discovery.feature.feature.group" version="0.0.0"/>
-			<unit id="org.eclipse.equinox.executable.feature.group" version="0.0.0"/>
+			<unit id="org.eclipse.platform.feature.group" version="4.28.0.v20230605-0440"/>
+			<unit id="org.eclipse.rcp.feature.group" version="4.28.0.v20230605-0440"/>
+			<unit id="org.eclipse.jdt.feature.group" version="3.19.100.v20230605-0440"/>
+			<unit id="org.eclipse.equinox.p2.discovery.feature.feature.group" version="1.3.0.v20230322-1009"/>
+			<unit id="org.eclipse.equinox.executable.feature.group" version="3.8.2100.v20230415-0944"/>
 			<repository id="eclipse-latest" location="http://download.eclipse.org/releases/latest/"/>
+    		<unit id="org.eclipse.mylyn.builds.feature.group" version="3.26.1.v20230604-1755"/>
+    		<unit id="org.eclipse.mylyn.commons.activity.feature.group" version="3.26.1.v20230604-1755"/>
+    		<unit id="org.eclipse.mylyn.commons.feature.group" version="3.26.1.v20230604-1755"/>
+    		<unit id="org.eclipse.mylyn.commons.notifications.feature.group" version="3.26.1.v20230604-1755"/>
+    		<unit id="org.eclipse.mylyn.commons.repositories.feature.group" version="3.26.1.v20230604-1755"/>
+    		<unit id="org.eclipse.mylyn.team_feature.feature.group" version="3.26.1.v20230604-1755"/>
 		</location>
+        <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+            <repository location="https://download.eclipse.org/tools/orbit/downloads/drops/R20200529191137/repository/"/>
+            <unit id="org.sat4j.core" version="2.3.5.v201308161310"/>
+            <unit id="org.sat4j.pb" version="2.3.5.v201404071733"/>
+        </location>
+        <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
+            <repository location="https://download.eclipse.org/tools/orbit/downloads/drops/R20230531010532/repository/"/>
+        </location>
 		<location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
-			<repository location="https://download.eclipse.org/tools/orbit/downloads/drops/R20230531010532/repository/"/>
+			<repository location="https://download.eclipse.org/mylyn/releases/latest/"/>
+    		<unit id="org.eclipse.mylyn.commons.notifications.feature.group" version="3.26.0.v20230320-1407"/>
+    		<unit id="org.eclipse.mylyn.commons.repositories.feature.group" version="3.26.0.v20230131-2052"/>
 		</location>
 		<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
 			<repository location="https://download.eclipse.org/eclipse/updates/4.28/"/>
 		</location>
-		<location includeDependencyDepth="infinite" includeDependencyScopes="compile" includeSource="true" missingManifest="generate" type="Maven">
-			<dependencies>
-				<dependency>
-					<groupId>org.apache.commons</groupId>
-					<artifactId>commons-lang3</artifactId>
-					<version>3.12.0</version>
-					<type>jar</type>
-				</dependency>
-				<dependency>
-					<groupId>org.apache.logging.log4j</groupId>
-					<artifactId>log4j-api</artifactId>
-					<version>2.20.0</version>
-					<type>jar</type>
-				</dependency>
-				<dependency>
-					<groupId>org.apache.logging.log4j</groupId>
-					<artifactId>log4j-core</artifactId>
-					<version>2.20.0</version>
-					<type>jar</type>
-				</dependency>
-				<dependency>
-					<groupId>org.apache.logging.log4j</groupId>
-					<artifactId>log4j-slf4j-impl</artifactId>
-					<version>2.20.0</version>
-					<type>jar</type>
-				</dependency>
-			</dependencies>
-		</location>
+    	<location includeDependencyDepth="infinite" includeDependencyScopes="compile" includeSource="true" missingManifest="generate" type="Maven">
+        	<dependencies>
+            	<dependency>
+                	<groupId>javax.annotation</groupId>
+                	<artifactId>javax.annotation-api</artifactId>
+                	<version>1.3.2</version>
+                	<type>jar</type>
+            	</dependency>
+            	<dependency>
+                	<groupId>javax.inject</groupId>
+                	<artifactId>javax.inject</artifactId>
+                	<version>1</version>
+                	<type>jar</type>
+            	</dependency>
+            	<dependency>
+                	<groupId>org.apache.commons</groupId>
+                	<artifactId>commons-lang3</artifactId>
+                	<version>3.12.0</version>
+                	<type>jar</type>
+            	</dependency>
+            	<dependency>
+                	<groupId>org.apache.logging.log4j</groupId>
+                	<artifactId>log4j-api</artifactId>
+                	<version>2.20.0</version>
+                	<type>jar</type>
+            	</dependency>
+            	<dependency>
+                	<groupId>org.apache.logging.log4j</groupId>
+                	<artifactId>log4j-core</artifactId>
+                	<version>2.20.0</version>
+                	<type>jar</type>
+            	</dependency>
+            	<dependency>
+                	<groupId>org.apache.logging.log4j</groupId>
+                	<artifactId>log4j-slf4j-impl</artifactId>
+                	<version>2.20.0</version>
+                	<type>jar</type>
+            	</dependency>
+        	</dependencies>
+    	</location>
 	</locations>
 </target>
