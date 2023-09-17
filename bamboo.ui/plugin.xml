@@ -1,33 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
+<!--
+    Copyright (c) 2010 Tasktop Technologies and others. 
+ 
+    This program and the accompanying materials are made available under the
+    terms of the Eclipse Public License v. 2.0 which is available at
+    https://www.eclipse.org/legal/epl-2.0
+ 
+    SPDX-License-Identifier: EPL-2.0
+
+    Contributors:
+        Tasktop Technologies - initial API and implementation
+ -->
 <plugin>
    <extension
          point="org.eclipse.mylyn.builds.ui.connectors">
       <connector
-            core="me.glindholm.mylyn.build.bamboo.core.internal.BambooConnector"
+            core="me.glindholm.mylyn.internal.bamboo.core.BambooConnector"
             icon="icons/obj16/bamboo.png"
             kind="org.eclipse.mylyn.bamboo"
-            label="Bamboo"
-            ui="me.glindholm.mylyn.build.bamboo.ui.internal.BambooConnectorUi">
+            label="bamboo"
+            ui="me.glindholm.mylyn.internal.bamboo.ui.BambooConnectorUi">
       </connector>
    </extension>
    <extension
          point="org.eclipse.mylyn.commons.repositories.ui.newWizards">
       <wizard
             category="org.eclipse.mylyn.builds.ui.category.Builds"
-            class="me.glindholm.mylyn.build.bamboo.ui.internal.NewBambooServerWizard"
+            class="me.glindholm.mylyn.internal.bamboo.ui.NewBambooServerWizard"
             icon="icons/obj16/bamboo.png"
             id="org.eclipse.mylyn.bamboo"
             name="Bamboo">
          <description>
-            Connects to continuous integration servers.
+            Connects to continuous integration servers. Supports Bamboo 8 and above.
          </description>
       </wizard>
    </extension>
    <extension
          point="org.eclipse.mylyn.builds.ui.startup">
       <startup
-            class="me.glindholm.mylyn.build.bamboo.ui.internal.BambooStartup">
+            class="me.glindholm.mylyn.internal.bamboo.ui.BambooStartup">
       </startup>
    </extension>
 

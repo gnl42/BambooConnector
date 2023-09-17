@@ -1,0 +1,42 @@
+{
+  "openapi" : "3.0.1",
+  "info" : {
+    "title" : "Logfile",
+    "description" : "Retrieve logfile from bamboo",
+    "contact" : {
+      "name" : "George Lindholm",
+      "email" : "javadev@glindholm.me"
+    },
+    "version" : "1.0.0",
+    "x-restgeninfo" : { }
+  },
+  "servers" : [ {
+    "url" : "http://{baseurl}/rest/",
+    "variables" : {
+      "baseurl" : {
+        "description" : "Bamboo URL",
+        "default" : "localhost:8085"
+      }
+    }
+  } ],
+  "paths" : {
+    "/" : {
+      "get" : {
+        "tags" : [ "download" ],
+        "operationId" : "getFile",
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "text/plain" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

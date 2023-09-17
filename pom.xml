@@ -8,7 +8,7 @@
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<properties>
-		<tycho.version>3.0.4</tycho.version>
+		<tycho.version>4.0.2</tycho.version>
 		<sonar.exclusions>**/src-gen/**</sonar.exclusions>
 		<env.ui.test>-Xms512m -Xmx2048m</env.ui.test>
 	</properties>
@@ -249,9 +249,6 @@
 					<!--<showEclipseLog>true</showEclipseLog> -->
 					<!--<testFailureIgnore>true</testFailureIgnore> -->
 					<argLine>${ui.test.vmargs}</argLine>
-					<jvmArgs>
-						<args>${ui.test.vmargs}</args>
-					</jvmArgs>
 					<bundleStartLevel>
 						<bundle>
 							<id>org.eclipse.equinox.launcher</id>
@@ -271,43 +268,43 @@
 					</dependencies>
 				</configuration>
 			</plugin>
-			<!--                        <plugin>-->
-			<!--                            <groupId>org.eclipse.tycho</groupId>-->
-			<!--                            <artifactId>target-platform-configuration</artifactId>-->
-			<!--                            <configuration>-->
-			<!--                                <environments>-->
-			<!--                                    <environment>-->
-			<!--                                        <os>linux</os>-->
-			<!--                                        <ws>gtk</ws>-->
-			<!--                                        <arch>x86_64</arch>-->
-			<!--                                    </environment>-->
-			<!--                                    <environment>-->
-			<!--                                        <os>win32</os>-->
-			<!--                                        <ws>win32</ws>-->
-			<!--                                        <arch>x86_64</arch>-->
-			<!--                                    </environment>-->
-			<!--                                    <environment>-->
-			<!--                                        <os>macosx</os>-->
-			<!--                                        <ws>cocoa</ws>-->
-			<!--                                        <arch>x86_64</arch>-->
-			<!--                                    </environment>-->
-			<!--                                </environments>-->
-			<!--                                <target>-->
-			<!--                                    <artifact>-->
-			<!--                                        <groupId>me.glindholm.mylyn.build</groupId>-->
-			<!--                                        <artifactId>bamboo.target</artifactId>-->
-			<!--                                        <version>1.0.0-SNAPSHOT</version>-->
-			<!--                                    </artifact>-->
-			<!--                                </target>-->
-			<!--                            </configuration>-->
-			<!--                        </plugin>-->
+			                        <plugin>
+			                            <groupId>org.eclipse.tycho</groupId>
+			                            <artifactId>target-platform-configuration</artifactId>
+			                            <configuration>
+			                                <environments>
+			                                    <environment>
+			                                        <os>linux</os>
+			                                        <ws>gtk</ws>
+			                                        <arch>x86_64</arch>
+			                                    </environment>
+			                                    <environment>
+			                                        <os>win32</os>
+			                                        <ws>win32</ws>
+			                                        <arch>x86_64</arch>
+			                                    </environment>
+			                                    <environment>
+			                                        <os>macosx</os>
+			                                        <ws>cocoa</ws>
+			                                        <arch>x86_64</arch>
+			                                    </environment>
+			                                </environments>
+			                                <target>
+			                                    <artifact>
+			                                        <groupId>me.glindholm.mylyn.build</groupId>
+			                                        <artifactId>bamboo.target</artifactId>
+			                                        <version>1.0.0-SNAPSHOT</version>
+			                                    </artifact>
+			                                </target>
+			                            </configuration>
+			                        </plugin>
 		</plugins>
 	</build>
 	<modules>
-		<!--        <module>bamboo.target</module>-->
+        <module>bamboo.target</module>
 		<module>bamboo.core</module>
 		<module>bamboo.ui</module>
-		<module>bamboo.test</module>
+        <!--		<module>bamboo.tests</module>-->
 		<module>bamboo.feature</module>
 		<module>bamboo.site</module>
 	</modules>
