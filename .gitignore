@@ -1,16 +1,4 @@
-bin/
 target/
-*.java._trace
-*.pyc
-.DS_Store
 .project
 .classpath
 .settings/
-*.log
-*.xtendbin
-*~
-# Workspace metadata folder created by Oomph when launching tests.
-tests/**/.metadata/
-# sonarlint temporary directory
-sonarlint/
-/.metadata/
