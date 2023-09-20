@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
-<!-- generated with https://github.com/mbarbero/fr.obeo.releng.targetplatform --><target name="Eclipse latest" sequenceNumber="1506582696">
+<!-- generated with https://github.com/mbarbero/fr.obeo.releng.targetplatform -->
+<target name="bamboo.target">
     <locations>
         <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
             <repository location="https://download.eclipse.org/cbi/updates/license/"/>

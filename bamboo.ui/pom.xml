@@ -8,10 +8,8 @@
         <groupId>me.glindholm.mylyn.bamboo</groupId>
         <artifactId>BambooConnector</artifactId>
         <version>1.0.0-SNAPSHOT</version>
-        <relativePath>..\pom.xml</relativePath>
     </parent>
     <artifactId>me.glindholm.mylyn.bamboo.ui</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
     <packaging>eclipse-plugin</packaging>
     <name>[bundle] Mylyn Bamboo Connector UI</name>
     <organization>

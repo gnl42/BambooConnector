@@ -47,7 +47,7 @@
                     <additionalProperties>
                         <additionalProperty>supportUrlQuery=false</additionalProperty>
                     </additionalProperties>
-                    <skipIfSpecIsUnchanged>false</skipIfSpecIsUnchanged>
+                    <skipIfSpecIsUnchanged>true</skipIfSpecIsUnchanged>
                     <configOptions>
                         <sourceFolder>.</sourceFolder>
                         <annotationLibrary>swagger2</annotationLibrary>
@@ -63,11 +63,11 @@
                         <hideGenerationTimestamp>true</hideGenerationTimestamp>
 
                         <apiPackage>
-                            me.glindholm.mylyn.bamboo.internal.bamboo.api</apiPackage>
+                            me.glindholm.mylyn.bamboo.internal.rest.api</apiPackage>
                         <invokerPackage>
-                            me.glindholm.mylyn.bamboo.internal.bamboo.invoker</invokerPackage>
+                            me.glindholm.mylyn.bamboo.internal.rest.invoker</invokerPackage>
                         <modelPackage>
-                            me.glindholm.mylyn.bamboo.internal.bamboo.model</modelPackage>
+                            me.glindholm.mylyn.bamboo.internal.rest.model</modelPackage>
                         <modelNamePrefix></modelNamePrefix>
                     </configOptions>
                 </configuration>

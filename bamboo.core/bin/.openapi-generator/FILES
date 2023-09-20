@@ -1,0 +1,14 @@
+.github/workflows/maven.yml
+.gitignore
+.travis.yml
+me/glindholm/mylyn/bamboo/internal/rest/api/DownloadApi.java
+me/glindholm/mylyn/bamboo/internal/rest/invoker/ApiClient.java
+me/glindholm/mylyn/bamboo/internal/rest/invoker/ApiException.java
+me/glindholm/mylyn/bamboo/internal/rest/invoker/ApiResponse.java
+me/glindholm/mylyn/bamboo/internal/rest/invoker/Configuration.java
+me/glindholm/mylyn/bamboo/internal/rest/invoker/JSON.java
+me/glindholm/mylyn/bamboo/internal/rest/invoker/Pair.java
+me/glindholm/mylyn/bamboo/internal/rest/invoker/RFC3339DateFormat.java
+me/glindholm/mylyn/bamboo/internal/rest/invoker/ServerConfiguration.java
+me/glindholm/mylyn/bamboo/internal/rest/invoker/ServerVariable.java
+me/glindholm/mylyn/bamboo/internal/rest/model/AbstractOpenApiSchema.java

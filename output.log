@@ -1,0 +1,14 @@
+class RestPlans {
+    link: class Link {
+        href: https://192.168.0.120:9683/rest/api/latest/plan
+        rel: self
+    }
+    plans: class RestPlanList {
+        startIndex: null
+        maxResult: null
+        size: 1
+        callback: JsonNullable[null]
+        plans: null
+        allElements: null
+    }
+}

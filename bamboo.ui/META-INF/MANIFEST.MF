@@ -16,5 +16,5 @@ Require-Bundle: org.eclipse.core.runtime;bundle-version="0.0.0",
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-Localization: plugin
-Export-Package: me.glindholm.mylyn.internal.bamboo.ui;x-internal:=true
-Bundle-Activator: me.glindholm.mylyn.internal.bamboo.ui.BambooUiPlugin
+Export-Package: me.glindholm.mylyn.bamboo.internal.ui;x-internal:=true
+Bundle-Activator: me.glindholm.mylyn.bamboo.internal.ui.BambooUiPlugin

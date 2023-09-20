@@ -16,7 +16,7 @@ import java.io.File;
 
 import org.eclipse.mylyn.builds.core.spi.BuildConnector;
 
-import me.glindholm.mylyn.internal.bamboo.core.BambooConnector;
+import me.glindholm.mylyn.bamboo.internal.core.BambooConnector;
 
 /**
  * @author Steffen Pingel

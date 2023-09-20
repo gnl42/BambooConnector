@@ -18,12 +18,13 @@ Require-Bundle: org.eclipse.core.runtime;bundle-version="0.0.0",
  com.fasterxml.jackson.core.jackson-annotations;bundle-version="2.15.2",
  com.fasterxml.jackson.core.jackson-core;bundle-version="2.15.2",
  com.fasterxml.jackson.core.jackson-databind;bundle-version="2.15.2",
- org.apache.commons.lang3;bundle-version="3.12.0"
+ org.apache.commons.lang3;bundle-version="3.12.0",
+ org.eclipse.mylyn.commons.workbench;bundle-version="4.0.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-Localization: plugin
-Export-Package: me.glindholm.mylyn.bamboo.internal.bamboo.model;x-friends:="me.glindholm.mylyn.bamboo.ui",
- me.glindholm.mylyn.bamboo.core;x-friends:="me.glindholm.mylyn.bamboo.ui",
- me.glindholm.mylyn.internal.bamboo.core;x-friends:="me.glindholm.mylyn.bamboo.ui",
- me.glindholm.mylyn.internal.bamboo.core.client;x-friends:="me.glindholm.mylyn.bamboo.ui"
-Bundle-Activator: me.glindholm.mylyn.internal.bamboo.core.BambooCorePlugin
+Export-Package: me.glindholm.mylyn.bamboo.core;x-friends:="me.glindholm.mylyn.bamboo.ui",
+ me.glindholm.mylyn.bamboo.internal.bamboo.model;x-friends:="me.glindholm.mylyn.bamboo.ui",
+ me.glindholm.mylyn.bamboo.internal.core;x-friends:="me.glindholm.mylyn.bamboo.ui",
+ me.glindholm.mylyn.bamboo.internal.core.client;x-friends:="me.glindholm.mylyn.bamboo.ui"
+Bundle-Activator: me.glindholm.mylyn.bamboo.internal.core.BambooCorePlugin

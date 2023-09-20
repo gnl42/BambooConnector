@@ -16,18 +16,18 @@
    <extension
          point="org.eclipse.mylyn.builds.ui.connectors">
       <connector
-            core="me.glindholm.mylyn.internal.bamboo.core.BambooConnector"
+            core="me.glindholm.mylyn.bamboo.internal.core.BambooConnector"
             icon="icons/obj16/bamboo.png"
             kind="org.eclipse.mylyn.bamboo"
             label="bamboo"
-            ui="me.glindholm.mylyn.internal.bamboo.ui.BambooConnectorUi">
+            ui="me.glindholm.mylyn.bamboo.internal.ui.BambooConnectorUi">
       </connector>
    </extension>
    <extension
          point="org.eclipse.mylyn.commons.repositories.ui.newWizards">
       <wizard
             category="org.eclipse.mylyn.builds.ui.category.Builds"
-            class="me.glindholm.mylyn.internal.bamboo.ui.NewBambooServerWizard"
+            class="me.glindholm.mylyn.bamboo.internal.ui.NewBambooServerWizard"
             icon="icons/obj16/bamboo.png"
             id="org.eclipse.mylyn.bamboo"
             name="Bamboo">
@@ -39,7 +39,7 @@
    <extension
          point="org.eclipse.mylyn.builds.ui.startup">
       <startup
-            class="me.glindholm.mylyn.internal.bamboo.ui.BambooStartup">
+            class="me.glindholm.mylyn.bamboo.internal.ui.BambooStartup">
       </startup>
    </extension>
 
