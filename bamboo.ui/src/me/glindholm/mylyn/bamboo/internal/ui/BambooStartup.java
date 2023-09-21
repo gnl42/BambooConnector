@@ -19,21 +19,21 @@ import org.eclipse.mylyn.builds.ui.BuildsUiStartup;
  */
 public class BambooStartup extends BuildsUiStartup {
 
-	private static BambooStartup instance;
+    private static BambooStartup instance;
 
-	public static BambooStartup getInstance() {
-		return instance;
-	}
+    public static BambooStartup getInstance() {
+        return instance;
+    }
 
-	public BambooStartup() {
-		instance = this;
-	}
+    public BambooStartup() {
+        instance = this;
+    }
 
-	@Override
-	public void lazyStartup() {
-	}
+    @Override
+    public void lazyStartup() {
+    }
 
-	public void stop() {
-	}
+    public void stop() {
+    }
 
 }

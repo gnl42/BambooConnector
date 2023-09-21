@@ -17,25 +17,25 @@ package me.glindholm.mylyn.bamboo.internal.core.client;
  */
 public class BambooServerInfo {
 
-	public enum Type {
-		BAMBOO
-	};
+    public enum Type {
+        BAMBOO
+    }
 
-	private final String version;
+    private final String version;
 
-	private final Type type;
+    private final Type type;
 
-	public BambooServerInfo(Type type, String version) {
-		this.type = type;
-		this.version = version;
-	}
+    public BambooServerInfo(final Type type, final String version) {
+        this.type = type;
+        this.version = version;
+    }
 
-	public Type getType() {
-		return type;
-	}
+    public Type getType() {
+        return type;
+    }
 
-	public String getVersion() {
-		return version;
-	}
+    public String getVersion() {
+        return version;
+    }
 
 }

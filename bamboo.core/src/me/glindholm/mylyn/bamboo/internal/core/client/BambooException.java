@@ -17,21 +17,21 @@ package me.glindholm.mylyn.bamboo.internal.core.client;
  */
 public class BambooException extends Exception {
 
-	private static final long serialVersionUID = -4419540659554920327L;
+    private static final long serialVersionUID = -4419540659554920327L;
 
-	public BambooException() {
-	}
+    public BambooException() {
+    }
 
-	public BambooException(String message) {
-		super(message);
-	}
+    public BambooException(final String message) {
+        super(message);
+    }
 
-	public BambooException(Throwable cause) {
-		super(cause.getMessage(), cause);
-	}
+    public BambooException(final Throwable cause) {
+        super(cause.getMessage(), cause);
+    }
 
-	public BambooException(String message, Throwable cause) {
-		super(message, cause);
-	}
+    public BambooException(final String message, final Throwable cause) {
+        super(message, cause);
+    }
 
 }

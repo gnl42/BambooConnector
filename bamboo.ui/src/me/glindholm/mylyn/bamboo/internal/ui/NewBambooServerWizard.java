@@ -25,24 +25,25 @@ import me.glindholm.mylyn.bamboo.internal.core.BambooCorePlugin;
  */
 public class NewBambooServerWizard extends BuildServerWizard {
 
-	/**
-	 * Creates a new instance using the supplied build server model. It is assumed that this describes a Bamboo server.
-	 */
-	public NewBambooServerWizard(IBuildServer model) {
-		super(model);
-	}
+    /**
+     * Creates a new instance using the supplied build server model. It is assumed that this describes a
+     * Bamboo server.
+     */
+    public NewBambooServerWizard(final IBuildServer model) {
+        super(model);
+    }
 
-	/**
-	 * Creates a new instance using the Bamboo server connector.
-	 */
-	public NewBambooServerWizard() {
-		super(BuildsUi.createServer(BambooCorePlugin.CONNECTOR_KIND));
-	}
+    /**
+     * Creates a new instance using the Bamboo server connector.
+     */
+    public NewBambooServerWizard() {
+        super(BuildsUi.createServer(BambooCorePlugin.CONNECTOR_KIND));
+    }
 
-	@Override
-	protected void initPage(BuildServerWizardPage page) {
-		page.setTitle(Messages.NewServerWizard_Title);
-		page.setMessage(Messages.NewServerWizard_Message);
-	}
+    @Override
+    protected void initPage(final BuildServerWizardPage page) {
+        page.setTitle(Messages.NewServerWizard_Title);
+        page.setMessage(Messages.NewServerWizard_Message);
+    }
 
 }

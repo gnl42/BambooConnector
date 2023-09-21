@@ -17,13 +17,13 @@ import java.util.Collections;
 import java.util.Map;
 
 public class BambooConfiguration implements Serializable {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	public Map<String, String> jobNameById = Collections.EMPTY_MAP;
+    public Map<String, String> jobNameById = Collections.EMPTY_MAP;
 
-	@Override
-	public String toString() {
-		return "BambooConfiguration [jobNameById=" + jobNameById + "]"; //$NON-NLS-1$ //$NON-NLS-2$
-	}
+    @Override
+    public String toString() {
+        return "BambooConfiguration [jobNameById=" + jobNameById + "]"; //$NON-NLS-1$ //$NON-NLS-2$
+    }
 
 }

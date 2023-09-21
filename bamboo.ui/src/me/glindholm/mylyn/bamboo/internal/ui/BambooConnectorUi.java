@@ -19,6 +19,6 @@ import org.eclipse.mylyn.builds.ui.spi.BuildConnectorUi;
  */
 public class BambooConnectorUi extends BuildConnectorUi {
 
-	public static final String ID_PLUGIN = "org.eclipse.mylyn.bamboo.ui"; //$NON-NLS-1$
+    public static final String ID_PLUGIN = "org.eclipse.mylyn.bamboo.ui"; //$NON-NLS-1$
 
 }

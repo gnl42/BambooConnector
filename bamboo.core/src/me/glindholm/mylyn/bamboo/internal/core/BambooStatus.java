@@ -21,26 +21,26 @@ import me.glindholm.mylyn.bamboo.internal.core.client.BambooServerInfo;
  */
 public class BambooStatus extends Status {
 
-	private BambooServerInfo info;
+    private BambooServerInfo info;
 
-	public BambooStatus(int severity, String pluginId, String message) {
-		super(severity, pluginId, message);
-	}
+    public BambooStatus(final int severity, final String pluginId, final String message) {
+        super(severity, pluginId, message);
+    }
 
-	public BambooStatus(int severity, String pluginId, String message, Throwable exception) {
-		super(severity, pluginId, message, exception);
-	}
+    public BambooStatus(final int severity, final String pluginId, final String message, final Throwable exception) {
+        super(severity, pluginId, message, exception);
+    }
 
-	public BambooStatus(int severity, String pluginId, int code, String message, Throwable exception) {
-		super(severity, pluginId, code, message, exception);
-	}
+    public BambooStatus(final int severity, final String pluginId, final int code, final String message, final Throwable exception) {
+        super(severity, pluginId, code, message, exception);
+    }
 
-	void setInfo(BambooServerInfo info) {
-		this.info = info;
-	}
+    void setInfo(final BambooServerInfo info) {
+        this.info = info;
+    }
 
-	public BambooServerInfo getInfo() {
-		return info;
-	}
+    public BambooServerInfo getInfo() {
+        return info;
+    }
 
 }

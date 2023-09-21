@@ -23,8 +23,8 @@ import me.glindholm.mylyn.bamboo.internal.core.BambooConnector;
  */
 public class BambooCore {
 
-	public static BuildConnector createConnector(File cacheFile) {
-		return new BambooConnector(cacheFile);
-	}
+    public static BuildConnector createConnector(final File cacheFile) {
+        return new BambooConnector(cacheFile);
+    }
 
 }

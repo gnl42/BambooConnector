@@ -24,29 +24,28 @@ import org.eclipse.mylyn.builds.core.spi.AbstractConfigurationCache;
  */
 public class BambooConfigurationCache extends AbstractConfigurationCache<BambooConfiguration> {
 
-	public BambooConfigurationCache(File cacheFile) {
-		super(cacheFile);
-	}
+    public BambooConfigurationCache(final File cacheFile) {
+        super(cacheFile);
+    }
 
-	public BambooConfigurationCache() {
-		super();
-	}
+    public BambooConfigurationCache() {
+    }
 
-	@Override
-	protected BambooConfiguration createConfiguration() {
-		return new BambooConfiguration();
-	}
+    @Override
+    protected BambooConfiguration createConfiguration() {
+        return new BambooConfiguration();
+    }
 
-	@Override
-	protected BambooConfiguration readConfiguration(ObjectInputStream in) throws IOException, ClassNotFoundException {
-		final Object configuration = in.readObject();
-		if (configuration instanceof BambooConfiguration) {
-			final BambooConfiguration bambooConfiguration = new BambooConfiguration();
-			bambooConfiguration.jobNameById = new HashMap<>(((BambooConfiguration) configuration).jobNameById);
-			return bambooConfiguration;
-		} else {
-			return (BambooConfiguration) configuration;
-		}
-	}
+    @Override
+    protected BambooConfiguration readConfiguration(final ObjectInputStream in) throws IOException, ClassNotFoundException {
+        final Object configuration = in.readObject();
+        if (configuration instanceof BambooConfiguration) {
+            final BambooConfiguration bambooConfiguration = new BambooConfiguration();
+            bambooConfiguration.jobNameById = new HashMap<>(((BambooConfiguration) configuration).jobNameById);
+            return bambooConfiguration;
+        } else {
+            return (BambooConfiguration) configuration;
+        }
+    }
 
 }

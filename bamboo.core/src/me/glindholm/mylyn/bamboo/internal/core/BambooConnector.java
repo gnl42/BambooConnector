@@ -31,36 +31,36 @@ import me.glindholm.mylyn.bamboo.internal.core.client.BambooConfigurationCache;
  */
 public class BambooConnector extends BuildConnector {
 
-	protected static File getCacheFile() {
-		if (Platform.isRunning()) {
-			Bundle bundle = Platform.getBundle(BambooCorePlugin.ID_PLUGIN);
-			if (bundle != null) {
-				IPath stateLocation = Platform.getStateLocation(bundle);
-				IPath cacheFile = stateLocation.append("configuration.obj"); //$NON-NLS-1$
-				return cacheFile.toFile();
-			}
-		}
-		return null;
-	}
+    protected static File getCacheFile() {
+        if (Platform.isRunning()) {
+            final Bundle bundle = Platform.getBundle(BambooCorePlugin.ID_PLUGIN);
+            if (bundle != null) {
+                final IPath stateLocation = Platform.getStateLocation(bundle);
+                final IPath cacheFile = stateLocation.append("configuration.obj"); //$NON-NLS-1$
+                return cacheFile.toFile();
+            }
+        }
+        return null;
+    }
 
-	private final BambooConfigurationCache cache;
+    private final BambooConfigurationCache cache;
 
-	public BambooConnector() {
-		this(getCacheFile());
-	}
+    public BambooConnector() {
+        this(getCacheFile());
+    }
 
-	public BambooConnector(File cacheFile) {
-		cache = new BambooConfigurationCache(cacheFile);
-	}
+    public BambooConnector(final File cacheFile) {
+        cache = new BambooConfigurationCache(cacheFile);
+    }
 
-	@Override
-	public BambooServerBehaviour getBehaviour(RepositoryLocation location) throws CoreException {
-		return new BambooServerBehaviour(location, cache);
-	}
+    @Override
+    public BambooServerBehaviour getBehaviour(final RepositoryLocation location) throws CoreException {
+        return new BambooServerBehaviour(location, cache);
+    }
 
-	@Override
-	public IBuildElement getBuildElementFromUrl(IBuildServer server, String url) {
-		return null;
-	}
+    @Override
+    public IBuildElement getBuildElementFromUrl(final IBuildServer server, final String url) {
+        return null;
+    }
 
 }
