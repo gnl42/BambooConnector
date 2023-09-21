@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2011 Tasktop Technologies and others.
+ * Copyright © 2023 George Lindholm.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0 which is available at
@@ -7,8 +7,7 @@
  *
  * SPDX-License-Identifier: EPL-2.0
  *
- *     Tasktop Technologies - initial API and implementation
- *     Itema AS - Minor adjustments and string externalisation
+ *     George Lindholm - initial API and implementation
  *******************************************************************************/
 
 package me.glindholm.mylyn.bamboo.internal.ui;

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2016 Markus Knittig and others.
+ * Copyright © 2023 George Lindholm.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0 which is available at
@@ -7,10 +7,7 @@
  *
  * SPDX-License-Identifier: EPL-2.0
  *
- *     Markus Knittig - initial API and implementation
- *     Tasktop Technologies - improvements
- *     Eike Stepper - improvements for bug 323759
- *     Benjamin Muskalla - 324039: [build] tests fail with NPE
+ *     George Lindholm - initial API and implementation
  *******************************************************************************/
 
 package me.glindholm.mylyn.bamboo.internal.core;

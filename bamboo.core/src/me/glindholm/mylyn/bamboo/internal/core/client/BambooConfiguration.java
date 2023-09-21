@@ -1,12 +1,13 @@
 /*******************************************************************************
- * Copyright (c) 2023 Tasktop Technologies and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v2.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+ * Copyright © 2023 George Lindholm.
  *
- * Contributors:
- *     Tasktop Technologies - initial API and implementation
+ * This program and the accompanying materials are made available under the
+ * terms of the Eclipse Public License v. 2.0 which is available at
+ * https://www.eclipse.org/legal/epl-2.0
+ *
+ * SPDX-License-Identifier: EPL-2.0
+ *
+ *     George Lindholm - initial API and implementation
  *******************************************************************************/
 
 package me.glindholm.mylyn.bamboo.internal.core.client;
