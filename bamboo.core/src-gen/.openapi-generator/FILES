@@ -1,6 +1,5 @@
 .github/workflows/maven.yml
 .gitignore
-.travis.yml
 me/glindholm/mylyn/bamboo/internal/rest/api/DownloadApi.java
 me/glindholm/mylyn/bamboo/internal/rest/invoker/ApiClient.java
 me/glindholm/mylyn/bamboo/internal/rest/invoker/ApiException.java

@@ -1,6 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %Bundle-Name
+Automatic-Module-Name: %Bundle-Name
 Bundle-SymbolicName: me.glindholm.mylyn.bamboo.core;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Vendor: %Bundle-Vendor
@@ -24,7 +25,6 @@ Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-Localization: plugin
 Export-Package: me.glindholm.mylyn.bamboo.core;x-friends:="me.glindholm.mylyn.bamboo.ui",
- me.glindholm.mylyn.bamboo.internal.bamboo.model;x-friends:="me.glindholm.mylyn.bamboo.ui",
  me.glindholm.mylyn.bamboo.internal.core;x-friends:="me.glindholm.mylyn.bamboo.ui",
  me.glindholm.mylyn.bamboo.internal.core.client;x-friends:="me.glindholm.mylyn.bamboo.ui"
 Bundle-Activator: me.glindholm.mylyn.bamboo.internal.core.BambooCorePlugin

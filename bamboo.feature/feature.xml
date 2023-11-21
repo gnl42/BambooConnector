@@ -35,6 +35,7 @@
    <requires>
       <import feature="org.eclipse.mylyn.builds.feature" version="4.0.0" match="compatible"/>
       <import feature="org.eclipse.mylyn.commons.repositories.feature" version="4.0.0" match="compatible"/>
+      <import plugin="jakarta.annotation-api" version="2.1.1" match="compatible"/>
    </requires>
 
    <plugin
@@ -46,6 +47,55 @@
 
    <plugin
          id="me.glindholm.mylyn.bamboo.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.fasterxml.jackson.core.jackson-annotations"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.fasterxml.jackson.core.jackson-core"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.fasterxml.jackson.core.jackson-databind"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="jakarta.annotation-api"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.fasterxml.jackson.datatype.jackson-datatype-jsr310"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="wrapped.org.openapitools.jackson-databind-nullable"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="io.swagger.core.v3.swagger-annotations"
          download-size="0"
          install-size="0"
          version="0.0.0"

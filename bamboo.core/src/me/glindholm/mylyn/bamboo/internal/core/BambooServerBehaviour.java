@@ -99,14 +99,14 @@ import me.glindholm.mylyn.bamboo.internal.rest.model.RestPlans;
 import me.glindholm.mylyn.bamboo.internal.rest.model.RestQueuedBuild;
 import me.glindholm.mylyn.bamboo.internal.rest.model.RestResultsResults;
 import me.glindholm.mylyn.bamboo.internal.rest.model.RestStageResult;
+import me.glindholm.mylyn.bamboo.internal.rest.model.RestTestResult;
+import me.glindholm.mylyn.bamboo.internal.rest.model.RestTestResultErrorsList;
+import me.glindholm.mylyn.bamboo.internal.rest.model.RestTestResultsResultList;
 import me.glindholm.mylyn.bamboo.internal.rest.model.RestVariable;
 import me.glindholm.mylyn.bamboo.internal.rest.model.RestVariableDefinitionContext;
 import me.glindholm.mylyn.bamboo.internal.rest.model.Result;
 import me.glindholm.mylyn.bamboo.internal.rest.model.ResultChange;
 import me.glindholm.mylyn.bamboo.internal.rest.model.StartBuildRequest;
-import me.glindholm.mylyn.bamboo.internal.rest.model.TestResult;
-import me.glindholm.mylyn.bamboo.internal.rest.model.TestResultErrorsList;
-import me.glindholm.mylyn.bamboo.internal.rest.model.TestResultsResultList;
 
 /**
  * @author George Lindholm
@@ -245,7 +245,7 @@ public class BambooServerBehaviour extends BuildServerBehaviour {
 
         build.setId(String.valueOf(result.getId()));
         build.setName(result.getPlanName());
-        build.setBuildNumber(result.getBuildNumber());
+        build.setBuildNumber(result.getBuildNumber().intValue());
         build.setLabel(String.valueOf(result.getBuildNumber()));
         build.setDuration(result.getBuildDuration());
         build.setTimestamp(result.getBuildStartedTime().getTime());
@@ -374,11 +374,11 @@ public class BambooServerBehaviour extends BuildServerBehaviour {
         }
     }
 
-    private void parseTests(final Map<String, List<ITestCase>> cases, final TestResultsResultList tests, final TestCaseResult testResult)
+    private void parseTests(final Map<String, List<ITestCase>> cases, final RestTestResultsResultList restTestResultsResultList, final TestCaseResult testResult)
             throws RuntimeException {
-        if (tests != null && tests.getTestResult() != null) {
+        if (restTestResultsResultList != null && restTestResultsResultList.getTestResult() != null) {
             // test results
-            for (final TestResult junitCase : tests.getTestResult()) {
+            for (final RestTestResult junitCase : restTestResultsResultList.getTestResult()) {
                 final ITestCase testCase = parseTestCase(junitCase);
 
                 final List<ITestCase> list = cases.computeIfAbsent(junitCase.getClassName(), s -> new ArrayList<>());
@@ -440,7 +440,7 @@ public class BambooServerBehaviour extends BuildServerBehaviour {
         return artifact;
     }
 
-    private ITestCase parseTestCase(final TestResult junitCase) throws RuntimeException {
+    private ITestCase parseTestCase(final RestTestResult junitCase) throws RuntimeException {
         final ITestCase testCase = createTestCase();
 
         testCase.setClassName(junitCase.getClassName());
@@ -451,7 +451,7 @@ public class BambooServerBehaviour extends BuildServerBehaviour {
         testCase.setLabel(junitCase.getMethodName());
         testCase.setStatus(parseStatus(junitCase));
 
-        final TestResultErrorsList stackTrace = junitCase.getErrors();
+        final RestTestResultErrorsList stackTrace = junitCase.getErrors();
         if (stackTrace != null && stackTrace.getSize() > 0) {
             // What does it mean if more than one???
             testCase.setStackTrace(stackTrace.getError().get(0).getMessage());
@@ -483,7 +483,7 @@ public class BambooServerBehaviour extends BuildServerBehaviour {
     }
 
     private static BuildStatus parseBuildStatus(final Result result) {
-        return switch (result.getState()) {
+        return switch (result.getBuildState()) {
         case "Successful" -> {
             yield BuildStatus.SUCCESS;
         }
@@ -494,12 +494,12 @@ public class BambooServerBehaviour extends BuildServerBehaviour {
             yield null;
         }
         default -> {
-            throw new RuntimeException("unknown status: " + result.getState());
+            throw new RuntimeException("unknown status: " + result.getBuildState());
         }
         };
     }
 
-    private static TestCaseResult parseStatus(final TestResult junitCase) throws RuntimeException {
+    private static TestCaseResult parseStatus(final RestTestResult junitCase) throws RuntimeException {
         return switch (junitCase.getStatus()) {
         case "successful" -> {
             yield TestCaseResult.PASSED;
@@ -640,7 +640,6 @@ public class BambooServerBehaviour extends BuildServerBehaviour {
         final IBuildPlan buildPlan = createBuildPlan();
 
         buildPlan.setId(plan.getStages().getStage().get(0).getPlans().getPlan().get(0).getPlanKey().getKey());
-//		buildPlan.setId(plan.getPlanKey().getKey());
         buildPlan.setName(plan.getPlanKey().getKey());
         final String planName;
         if (plan.getMaster() == null) {
@@ -670,7 +669,6 @@ public class BambooServerBehaviour extends BuildServerBehaviour {
                     default: {
                     }
                     }
-
                 }
             }
         }
@@ -685,7 +683,7 @@ public class BambooServerBehaviour extends BuildServerBehaviour {
 
             build.setId(lastBuild.getPlanResultKey().getKey());
             build.setLabel("build label");
-            build.setBuildNumber(lastBuild.getBuildNumber());
+            build.setBuildNumber(lastBuild.getBuildNumber().intValue());
 //			build.setUrl(lastBuild.getLink().getHref().toString());
 
             buildPlan.setLastBuild(build);

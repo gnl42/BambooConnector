@@ -8,37 +8,17 @@
     <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <properties>
-        <tycho.version>4.0.2</tycho.version>
+        <tycho.version>4.0.4</tycho.version>
         <sonar.exclusions>**/src-gen/**</sonar.exclusions>
         <env.ui.test>-Xms512m -Xmx2048m</env.ui.test>
     </properties>
-    <repositories>
-        <!--		<repository>-->
-        <!--			<id>eclipse</id>-->
-        <!--			<url>https://download.eclipse.org/releases/latest</url>-->
-        <!--			<layout>p2</layout>-->
-        <!--		</repository>-->
-        <!--		<repository>-->
-        <!--			<id>orbit</id>-->
-        <!--			<url>-->
-        <!--
-        https://download.eclipse.org/tools/orbit/downloads/drops/R20230302014618/repository</url>-->
-        <!--			<layout>p2</layout>-->
-        <!--		</repository>-->
-        <!--		<repository>-->
-        <!--			<id>mylyn</id>-->
-        <!--
-        <url>https://download.eclipse.org/mylyn/snapshots/nightly/mylyn/</url>-->
-        <!--			<layout>p2</layout>-->
-        <!--		</repository>-->
-    </repositories>
     <build>
         <pluginManagement>
             <plugins>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-javadoc-plugin</artifactId>
-                    <version>3.4.1</version>
+                    <version>3.6.2</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -48,7 +28,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-deploy-plugin</artifactId>
-                    <version>3.0.0</version>
+                    <version>3.1.1</version>
                 </plugin>
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
@@ -58,17 +38,17 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-surefire-report-plugin</artifactId>
-                    <version>3.0.0-M8</version>
+                    <version>3.2.2</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-enforcer-plugin</artifactId>
-                    <version>3.2.1</version>
+                    <version>3.4.1</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-resources-plugin</artifactId>
-                    <version>3.3.0</version>
+                    <version>3.3.1</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
@@ -144,7 +124,7 @@
                 <plugin>
                     <groupId>org.eclipse.cbi.maven.plugins</groupId>
                     <artifactId>eclipse-jarsigner-plugin</artifactId>
-                    <version>1.1.7</version>
+                    <version>1.4.2</version>
                 </plugin>
                 <plugin>
                     <groupId>org.eclipse.tycho</groupId>

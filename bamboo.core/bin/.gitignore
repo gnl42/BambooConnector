@@ -19,4 +19,9 @@ hs_err_pid*
 target
 .gradle
 build
+/.github/
+/.gitignore
+/.openapi-generator-ignore
+/.openapi-generator/
+/.travis.yml
 /me/

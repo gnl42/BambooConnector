@@ -2,20 +2,19 @@
   "openapi" : "3.0.1",
   "info" : {
     "title" : "Logfile",
-    "description" : "Retrieve logfile from bamboo",
+    "description" : "Retrieve logfile from Bamboo",
     "contact" : {
-      "name" : "George Lindholm",
-      "email" : "javadev@glindholm.me"
+      "name" : "George Lindholm"
     },
     "version" : "1.0.0",
     "x-restgeninfo" : { }
   },
   "servers" : [ {
-    "url" : "http://{baseurl}/rest/",
+    "url" : "https://{baseurl}/rest/",
     "variables" : {
       "baseurl" : {
         "description" : "Bamboo URL",
-        "default" : "localhost:8085"
+        "default" : "192.168.0.120:9383"
       }
     }
   } ],
