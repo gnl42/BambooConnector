@@ -46,6 +46,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.SubMonitor;
 import org.eclipse.mylyn.builds.core.BuildState;
 import org.eclipse.mylyn.builds.core.BuildStatus;
 import org.eclipse.mylyn.builds.core.IArtifact;
@@ -194,10 +195,18 @@ public class BambooServerBehaviour extends BuildServerBehaviour {
                 final RestResultsResults bambooBuilds = def.getBuildHistory(planKey[0], planKey[1], true, null,
                         "results.result,results.result.stages.stage.results.result", null, null, null, null, null, null, null);
 
-                final List<IBuild> builds = new ArrayList<>(bambooBuilds.getResults().getResult().size());
+                int buildSize = bambooBuilds.getResults().getResult().size();
+                final List<IBuild> builds = new ArrayList<>(buildSize);
+                final SubMonitor progress = SubMonitor.convert(monitor, 100);
+                progress.split(0);
+                progress.setTaskName("Retrieving build history");
+                progress.setWorkRemaining(buildSize);
+
                 for (final Result bambooBuild : bambooBuilds.getResults().getResult()) {
                     builds.add(parseBuild(bambooBuild));
+                    progress.split(1);
                 }
+                progress.done();
                 return builds;
             } else {
                 throw new UnsupportedOperationException("Unsupported request kind and scope combination: kind=" //$NON-NLS-1$
@@ -591,29 +600,51 @@ public class BambooServerBehaviour extends BuildServerBehaviour {
         final List<IBuildPlan> plans = new ArrayList<>();
         boolean updateConfig = false;
         try {
+            monitor.subTask("Looking for plans");
             if (ids == null) {
+                final SubMonitor progress = SubMonitor.convert(monitor, 100);
+                progress.split(0);
+                progress.setTaskName("Looking for plans");
                 updateConfig = true;
-                final RestPlans allPlans = build.getAllPlanList("plans.plan.branches"); //$NON-NLS-1$
+                final RestPlans allPlans = build.getAllPlanList("plans.plan.branches", null, 3000); //$NON-NLS-1$
 
                 ids = new ArrayList<>();
-                for (final RestPlan plan : allPlans.getPlans().getPlan()) {
+
+                List<RestPlan> bambooPlans = allPlans.getPlans().getPlan();
+                progress.split(40).setWorkRemaining(bambooPlans.size());
+
+                for (final RestPlan plan : bambooPlans) {
                     ids.add(plan.getPlanKey().getKey());
                     for (final RestPlanBranch branch : plan.getBranches().getBranch()) {
                         ids.add(branch.getKey());
                     }
+                    progress.split(1);
                 }
+                progress.done();
             }
             final DefaultApi def = new DefaultApi(apiClient);
+            final SubMonitor progress = SubMonitor.convert(monitor, 100);
+            progress.split(0);
+            progress.setTaskName("Retrieving build info");
+            progress.setWorkRemaining(ids.size());
             for (final String id : ids) {
                 final String[] planKey = id.split(DASH);
-                final RestPlan plan = build.getPlan(planKey[0], planKey[1], "stages.stage.plans[0].plan.stages.stage,variableContext");
+                try {
+                    final RestPlan plan = build.getPlan(planKey[0], planKey[1], "stages.stage.plans[0].plan.stages.stage,variableContext");
 
-                final RestResultsResults history = def.getBuildHistory(planKey[0], planKey[1], null, null, "results[0].result.variables", null, null, null,
-                        null, null, null, null);
-                final IBuildPlan job = parseBuildPlan(plan, history);
-                plans.add(job);
+                    final RestResultsResults history = def.getBuildHistory(planKey[0], planKey[1], null, null, "results[0].result.variables", null, null, null,
+                            null, null, null, null);
+                    final IBuildPlan job = parseBuildPlan(plan, history);
+                    plans.add(job);
+                } catch (ApiException e) {
+                    if (e.getCode() == 404) { // Does not exist
+                    } else if (e.getCode() == 400) { // No permission
+
+                    }
+                }
+                progress.split(1);
             }
-
+            progress.done();
             if (updateConfig) {
                 updateConfiguration(plans);
             }

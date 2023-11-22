@@ -24796,6 +24796,24 @@
                         "schema": {
                             "type": "string"
                         }
+                    },
+                    {
+                        "name": "start-index",
+                        "in": "query",
+                        "description": "Start index of branches",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
+                    },
+                    {
+                        "name": "max-result",
+                        "in": "query",
+                        "description": "Maximum count of branches",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        }
                     }
                 ],
                 "responses": {

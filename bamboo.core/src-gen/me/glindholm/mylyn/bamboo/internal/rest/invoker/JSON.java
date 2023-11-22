@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.databind.*;
 import org.openapitools.jackson.nullable.JsonNullableModule;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import me.glindholm.mylyn.bamboo.internal.rest.model.*;
 
 import java.text.DateFormat;
 import java.util.HashMap;

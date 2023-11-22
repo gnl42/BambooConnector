@@ -1010,11 +1010,13 @@ public class BuildApi {
    * 
    * List all plans that user has READ permission for and allowed to see.  Possible expand parameters:  - &lt;tt&gt;plans&lt;/tt&gt; - list of plans  - &lt;tt&gt;plans.plan&lt;/tt&gt; - list of plans with plan details  - &lt;tt&gt;plans.plan.actions&lt;/tt&gt; - list of plans with actions details  - &lt;tt&gt;plans.plan.s&lt;/tt&gt; - list of plans with stages details  - &lt;tt&gt;plans.plan.branches&lt;/tt&gt; - list of plans with brnach details
    * @param expand Possible expand parameters: plans,plans.plan,plans.plan.actions,plans.plan.stages,plans.plan.branches (optional)
+   * @param startIndex Start index of branches (optional)
+   * @param maxResult Maximum count of branches (optional)
    * @return RestPlans
    * @throws ApiException if fails to make API call
    */
-  public RestPlans getAllPlanList(String expand) throws ApiException {
-    ApiResponse<RestPlans> localVarResponse = getAllPlanListWithHttpInfo(expand);
+  public RestPlans getAllPlanList(String expand, Integer startIndex, Integer maxResult) throws ApiException {
+    ApiResponse<RestPlans> localVarResponse = getAllPlanListWithHttpInfo(expand, startIndex, maxResult);
     return localVarResponse.getData();
   }
 
@@ -1022,11 +1024,13 @@ public class BuildApi {
    * 
    * List all plans that user has READ permission for and allowed to see.  Possible expand parameters:  - &lt;tt&gt;plans&lt;/tt&gt; - list of plans  - &lt;tt&gt;plans.plan&lt;/tt&gt; - list of plans with plan details  - &lt;tt&gt;plans.plan.actions&lt;/tt&gt; - list of plans with actions details  - &lt;tt&gt;plans.plan.s&lt;/tt&gt; - list of plans with stages details  - &lt;tt&gt;plans.plan.branches&lt;/tt&gt; - list of plans with brnach details
    * @param expand Possible expand parameters: plans,plans.plan,plans.plan.actions,plans.plan.stages,plans.plan.branches (optional)
+   * @param startIndex Start index of branches (optional)
+   * @param maxResult Maximum count of branches (optional)
    * @return ApiResponse&lt;RestPlans&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<RestPlans> getAllPlanListWithHttpInfo(String expand) throws ApiException {
-    HttpRequest.Builder localVarRequestBuilder = getAllPlanListRequestBuilder(expand);
+  public ApiResponse<RestPlans> getAllPlanListWithHttpInfo(String expand, Integer startIndex, Integer maxResult) throws ApiException {
+    HttpRequest.Builder localVarRequestBuilder = getAllPlanListRequestBuilder(expand, startIndex, maxResult);
     try {
       HttpResponse<InputStream> localVarResponse = memberVarHttpClient.send(
           localVarRequestBuilder.build(),
@@ -1054,7 +1058,7 @@ public class BuildApi {
     }
   }
 
-  private HttpRequest.Builder getAllPlanListRequestBuilder(String expand) throws ApiException {
+  private HttpRequest.Builder getAllPlanListRequestBuilder(String expand, Integer startIndex, Integer maxResult) throws ApiException {
 
     HttpRequest.Builder localVarRequestBuilder = HttpRequest.newBuilder();
 
@@ -1065,6 +1069,10 @@ public class BuildApi {
     String localVarQueryParameterBaseName;
     localVarQueryParameterBaseName = "expand";
     localVarQueryParams.addAll(ApiClient.parameterToPairs("expand", expand));
+    localVarQueryParameterBaseName = "start-index";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("start-index", startIndex));
+    localVarQueryParameterBaseName = "max-result";
+    localVarQueryParams.addAll(ApiClient.parameterToPairs("max-result", maxResult));
 
     if (!localVarQueryParams.isEmpty() || localVarQueryStringJoiner.length() != 0) {
       StringJoiner queryJoiner = new StringJoiner("&");
