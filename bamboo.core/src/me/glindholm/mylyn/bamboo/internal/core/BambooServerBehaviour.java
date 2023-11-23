@@ -46,6 +46,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.SubMonitor;
 import org.eclipse.mylyn.builds.core.BuildState;
 import org.eclipse.mylyn.builds.core.BuildStatus;
@@ -72,6 +73,7 @@ import org.eclipse.mylyn.builds.core.spi.GetBuildsRequest;
 import org.eclipse.mylyn.builds.core.spi.GetBuildsRequest.Kind;
 import org.eclipse.mylyn.builds.core.spi.GetBuildsRequest.Scope;
 import org.eclipse.mylyn.builds.core.spi.RunBuildRequest;
+import org.eclipse.mylyn.commons.core.StatusHandler;
 import org.eclipse.mylyn.commons.core.operations.IOperationMonitor;
 import org.eclipse.mylyn.commons.repositories.core.RepositoryLocation;
 import org.eclipse.mylyn.commons.repositories.core.auth.AuthenticationType;
@@ -113,6 +115,8 @@ import me.glindholm.mylyn.bamboo.internal.rest.model.StartBuildRequest;
  * @author George Lindholm
  */
 public class BambooServerBehaviour extends BuildServerBehaviour {
+    private static final int MAX_PLANS_TO_RETURN = 10000;
+
     private static final String GREATER_THAN = ">"; //$NON-NLS-1$
 
     private static final String LESS_THAN = "<"; //$NON-NLS-1$
@@ -383,8 +387,8 @@ public class BambooServerBehaviour extends BuildServerBehaviour {
         }
     }
 
-    private void parseTests(final Map<String, List<ITestCase>> cases, final RestTestResultsResultList restTestResultsResultList, final TestCaseResult testResult)
-            throws RuntimeException {
+    private void parseTests(final Map<String, List<ITestCase>> cases, final RestTestResultsResultList restTestResultsResultList,
+            final TestCaseResult testResult) throws RuntimeException {
         if (restTestResultsResultList != null && restTestResultsResultList.getTestResult() != null) {
             // test results
             for (final RestTestResult junitCase : restTestResultsResultList.getTestResult()) {
@@ -600,51 +604,55 @@ public class BambooServerBehaviour extends BuildServerBehaviour {
         final List<IBuildPlan> plans = new ArrayList<>();
         boolean updateConfig = false;
         try {
-            monitor.subTask("Looking for plans");
+            monitor.subTask("Finding plans");
             if (ids == null) {
                 final SubMonitor progress = SubMonitor.convert(monitor, 100);
-                progress.split(0);
-                progress.setTaskName("Looking for plans");
+                progress.setTaskName("Finding build names");
                 updateConfig = true;
-                final RestPlans allPlans = build.getAllPlanList("plans.plan.branches", null, 3000); //$NON-NLS-1$
-
-                ids = new ArrayList<>();
+                final RestPlans allPlans = build.getAllPlanList("plans.plan.branches", null, MAX_PLANS_TO_RETURN); //$NON-NLS-1$
 
                 List<RestPlan> bambooPlans = allPlans.getPlans().getPlan();
-                progress.split(40).setWorkRemaining(bambooPlans.size());
+                progress.worked(0);
+                progress.setWorkRemaining(bambooPlans.size());
 
                 for (final RestPlan plan : bambooPlans) {
-                    ids.add(plan.getPlanKey().getKey());
+                    IBuildPlan buildPlan = createBuildPlan();
+                    buildPlan.setId(plan.getKey());
+                    buildPlan.setName(plan.getName());
+                    plans.add(buildPlan);
                     for (final RestPlanBranch branch : plan.getBranches().getBranch()) {
-                        ids.add(branch.getKey());
+                        IBuildPlan branchPlan = createBuildPlan();
+                        branchPlan.setId(branch.getKey());
+                        branchPlan.setName(branch.getName());
+                        plans.add(branchPlan);
                     }
-                    progress.split(1);
+                    progress.worked(1);
                 }
                 progress.done();
-            }
-            final DefaultApi def = new DefaultApi(apiClient);
-            final SubMonitor progress = SubMonitor.convert(monitor, 100);
-            progress.split(0);
-            progress.setTaskName("Retrieving build info");
-            progress.setWorkRemaining(ids.size());
-            for (final String id : ids) {
-                final String[] planKey = id.split(DASH);
-                try {
-                    final RestPlan plan = build.getPlan(planKey[0], planKey[1], "stages.stage.plans[0].plan.stages.stage,variableContext");
+            } else {
+                final DefaultApi def = new DefaultApi(apiClient);
+                final SubMonitor progress = SubMonitor.convert(monitor, ids.size());
+                progress.setTaskName("Retrieving build info");
+                for (final String id : ids) {
+                    final String[] planKey = id.split(DASH);
+                    try {
+                        final RestPlan plan = build.getPlan(planKey[0], planKey[1], "stages.stage.plans[0].plan.stages.stage,variableContext");
 
-                    final RestResultsResults history = def.getBuildHistory(planKey[0], planKey[1], null, null, "results[0].result.variables", null, null, null,
-                            null, null, null, null);
-                    final IBuildPlan job = parseBuildPlan(plan, history);
-                    plans.add(job);
-                } catch (ApiException e) {
-                    if (e.getCode() == 404) { // Does not exist
-                    } else if (e.getCode() == 400) { // No permission
-
+                        final RestResultsResults history = def.getBuildHistory(planKey[0], planKey[1], null, null, "results[0].result.variables", null, null,
+                                null, null, null, null, null);
+                        final IBuildPlan buildPlan = parseBuildPlan(plan, history);
+                        plans.add(buildPlan);
+                    } catch (ApiException e) {
+                        if (e.getCode() == 404 || e.getCode() == 400) { // Does not exist
+                            StatusHandler.log(new Status(IStatus.WARNING, BambooCorePlugin.ID_PLUGIN, e.getMessage()));
+                        } else {
+                            StatusHandler.log(new Status(IStatus.ERROR, BambooCorePlugin.ID_PLUGIN, e.getMessage()));
+                        }
                     }
+                    progress.worked(1);
                 }
-                progress.split(1);
             }
-            progress.done();
+
             if (updateConfig) {
                 updateConfiguration(plans);
             }
