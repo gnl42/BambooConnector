@@ -261,7 +261,7 @@ public class BambooServerBehaviour extends BuildServerBehaviour {
         build.setBuildNumber(result.getBuildNumber().intValue());
         build.setLabel(String.valueOf(result.getBuildNumber()));
         build.setDuration(result.getBuildDuration());
-        build.setTimestamp(result.getBuildStartedTime().getTime());
+        build.setTimestamp(result.getBuildStartedTime() == null ? 0 : result.getBuildStartedTime().getTime());
         build.setUrl(browserUrl(result.getPlanResultKey().getEntityKey().getKey() + "-" + result.getBuildNumber()).toString());
         build.setState(parseBuildState(result));
         build.setStatus(parseBuildStatus(result));
@@ -285,7 +285,7 @@ public class BambooServerBehaviour extends BuildServerBehaviour {
                         build.setState(stage.getIsBuilding() ? BuildState.RUNNING : BuildState.STOPPED);
                     }
                     build.setStatus(parseBuildStatus(result));
-                    build.setSummary(result.getBuildReason());
+                    build.setSummary(parserBuildSummary(result));
 
                     final IBuildCause cause = createBuildCause();
                     cause.setBuild(null);
@@ -359,7 +359,7 @@ public class BambooServerBehaviour extends BuildServerBehaviour {
         } else {
             description = result.getBuildReason();
         }
-        return description + ", " + result.getBuildTestSummary(); //$NON-NLS-1$
+        return description + ", " + result.getBuildTestSummary() == null ? "" : result.getBuildTestSummary(); //$NON-NLS-1$
     }
 
     private void parseUnitTests(final ITestResult testResult, final Result stageResult) throws RuntimeException {
@@ -612,7 +612,7 @@ public class BambooServerBehaviour extends BuildServerBehaviour {
                 final RestPlans allPlans = build.getAllPlanList("plans.plan.branches", null, MAX_PLANS_TO_RETURN); //$NON-NLS-1$
 
                 List<RestPlan> bambooPlans = allPlans.getPlans().getPlan();
-                progress.worked(0);
+                progress.worked(60);
                 progress.setWorkRemaining(bambooPlans.size());
 
                 for (final RestPlan plan : bambooPlans) {
