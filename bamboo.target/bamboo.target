@@ -14,14 +14,6 @@
             <unit id="org.eclipse.equinox.executable.feature.group" version="0.0.0"/>
             <repository id="eclipse-2023-09" location="http://download.eclipse.org/releases/2023-09/"/>
         </location>
-        <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
-            <repository location="https://download.eclipse.org/tools/orbit/downloads/drops/R20200529191137/repository/"/>
-            <unit id="org.sat4j.core" version="2.3.5.v201308161310"/>
-            <unit id="org.sat4j.pb" version="2.3.5.v201404071733"/>
-        </location>
-        <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="true" type="InstallableUnit">
-            <repository location="https://download.eclipse.org/tools/orbit/downloads/drops/R20230531010532/repository/"/>
-        </location>
         <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
             <repository location="https://download.eclipse.org/mylyn/updates/release/latest"/>
             <unit id="org.eclipse.mylyn.builds.feature.feature.group" version="4.0.0.v20230804-1109"/>
@@ -32,15 +24,21 @@
             <unit id="org.eclipse.sdk.feature.group" version="0.0.0"/>
             <repository location="https://download.eclipse.org/eclipse/updates/4.29/"/>
         </location>
+        <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
+            <repository location="https://download.eclipse.org/tools/orbit/simrel/orbit-aggregation/2023-12/"/>
+            <unit id="jakarta.annotation-api" version="2.1.1"/>
+            <unit id="org.apache.commons.lang3" version="3.13.0"/>
+             <unit id="jakarta.inject.jakarta.inject-api" version="2.0.1"/>
+        </location>
         <location includeDependencyDepth="infinite" includeDependencyScopes="compile" includeSource="true" missingManifest="generate" type="Maven">
 
             <feature id="me.glindholm.mylyn.bamboo.target" label="maven" version="1.0.0.qualifier">
 
-   
 
-   
 
-   
+
+
+
                 <description url="http://www.example.com/description">
       [Enter Feature Description here.]
    </description>
@@ -62,42 +60,6 @@
                     <groupId>io.swagger.core.v3</groupId>
                     <artifactId>swagger-annotations</artifactId>
                     <version>2.2.19</version>
-                    <type>jar</type>
-                </dependency>
-                <dependency>
-                    <groupId>jakarta.annotation</groupId>
-                    <artifactId>jakarta.annotation-api</artifactId>
-                    <version>2.1.1</version>
-                    <type>jar</type>
-                </dependency>
-                <dependency>
-                    <groupId>javax.inject</groupId>
-                    <artifactId>javax.inject</artifactId>
-                    <version>1</version>
-                    <type>jar</type>
-                </dependency>
-                <dependency>
-                    <groupId>org.apache.commons</groupId>
-                    <artifactId>commons-lang3</artifactId>
-                    <version>3.12.0</version>
-                    <type>jar</type>
-                </dependency>
-                <dependency>
-                    <groupId>org.apache.logging.log4j</groupId>
-                    <artifactId>log4j-api</artifactId>
-                    <version>2.20.0</version>
-                    <type>jar</type>
-                </dependency>
-                <dependency>
-                    <groupId>org.apache.logging.log4j</groupId>
-                    <artifactId>log4j-core</artifactId>
-                    <version>2.20.0</version>
-                    <type>jar</type>
-                </dependency>
-                <dependency>
-                    <groupId>org.apache.logging.log4j</groupId>
-                    <artifactId>log4j-slf4j-impl</artifactId>
-                    <version>2.20.0</version>
                     <type>jar</type>
                 </dependency>
                 <dependency>

@@ -32,6 +32,10 @@
       %license
    </license>
 
+   <url>
+      <update label="Bamboo Connector Update Site" url="https://github.com/gnl42/BambooConnector-update"/>
+   </url>
+
    <requires>
       <import feature="org.eclipse.mylyn.builds.feature" version="4.0.0" match="compatible"/>
       <import feature="org.eclipse.mylyn.commons.repositories.feature" version="4.0.0" match="compatible"/>

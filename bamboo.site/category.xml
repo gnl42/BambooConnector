@@ -3,12 +3,10 @@
    <feature url="me.glindholm.mylyn.bamboo.feature_1.0.0.qualifier.jar" id="me.glindholm.mylyn.bamboo.feature" version="1.0.0.qualifier">
       <category name="bamboo.category"/>
    </feature>
-   <feature url="me.glindholm.mylyn.bamboo.feature.source_1.0.0.qualifier.jar" id="me.glindholm.mylyn.bamboo.feature.source" version="1.0.0.qualifier">
-      <category name="bamboo.category"/>
-   </feature>
-   <category-def name="bamboo.category" label="BambooConnector Category">
+   <category-def name="bamboo.category" label="Bamboo Connector">
       <description>
-         BambooConnector Category
+         Bamboo Connector
       </description>
    </category-def>
+   <repository-reference location="https://download.eclipse.org/mylyn/updates/release/latest" enabled="true" />
 </site>

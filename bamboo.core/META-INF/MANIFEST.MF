@@ -5,26 +5,26 @@ Automatic-Module-Name: %Bundle-Name
 Bundle-SymbolicName: me.glindholm.mylyn.bamboo.core;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Vendor: %Bundle-Vendor
-Require-Bundle: org.eclipse.core.runtime;bundle-version="0.0.0",
+Require-Bundle: me.glindholm.mylyn.bamboo.core;bundle-version="1.0.0",
+ org.eclipse.core.runtime;bundle-version="0.0.0",
  org.eclipse.emf.ecore;bundle-version="0.0.0",
- org.eclipse.mylyn.builds.core;bundle-version="4.0.0",
- org.eclipse.mylyn.commons.core;bundle-version="4.0.0",
- org.eclipse.mylyn.commons.repositories.core;bundle-version="4.0.0",
- org.eclipse.mylyn.commons.repositories.http.core;bundle-version="4.0.0",
- me.glindholm.mylyn.bamboo.core;bundle-version="1.0.0",
- jakarta.annotation-api;bundle-version="2.1.1",
- com.fasterxml.jackson.datatype.jackson-datatype-jsr310;bundle-version="2.15.2",
- wrapped.org.openapitools.jackson-databind-nullable;bundle-version="0.2.6",
- io.swagger.core.v3.swagger-annotations;bundle-version="2.2.14",
- com.fasterxml.jackson.core.jackson-annotations;bundle-version="2.15.2",
- com.fasterxml.jackson.core.jackson-core;bundle-version="2.15.2",
- com.fasterxml.jackson.core.jackson-databind;bundle-version="2.15.2",
- org.apache.commons.lang3;bundle-version="3.12.0",
- org.eclipse.mylyn.commons.workbench;bundle-version="4.0.0"
+ org.eclipse.mylyn.builds.core;bundle-version="0.0.0",
+ org.eclipse.mylyn.commons.core;bundle-version="0.0.0",
+ org.eclipse.mylyn.commons.repositories.core;bundle-version="0.0.0",
+ org.eclipse.mylyn.commons.repositories.http.core;bundle-version="0.0.0",
+ org.eclipse.mylyn.commons.workbench;bundle-version="0.0.0",
+ io.swagger.core.v3.swagger-annotations;bundle-version="0.0.0",
+ com.fasterxml.jackson.core.jackson-annotations;bundle-version="0.0.0",
+ com.fasterxml.jackson.core.jackson-core;bundle-version="0.0.0",
+ com.fasterxml.jackson.core.jackson-databind;bundle-version="0.0.0",
+ wrapped.org.openapitools.jackson-databind-nullable;bundle-version="0.0.0",
+ com.fasterxml.jackson.datatype.jackson-datatype-jsr310;bundle-version="0.0.0",
+ jakarta.annotation-api;bundle-version="0.0.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-17
 Bundle-Localization: plugin
 Export-Package: me.glindholm.mylyn.bamboo.core;x-friends:="me.glindholm.mylyn.bamboo.ui",
  me.glindholm.mylyn.bamboo.internal.core;x-friends:="me.glindholm.mylyn.bamboo.ui",
  me.glindholm.mylyn.bamboo.internal.core.client;x-friends:="me.glindholm.mylyn.bamboo.ui"
+Import-Package: org.apache.commons.lang3
 Bundle-Activator: me.glindholm.mylyn.bamboo.internal.core.BambooCorePlugin

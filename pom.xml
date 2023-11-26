@@ -11,6 +11,16 @@
         <tycho.version>4.0.4</tycho.version>
         <sonar.exclusions>**/src-gen/**</sonar.exclusions>
         <env.ui.test>-Xms512m -Xmx2048m</env.ui.test>
+
+        <!-- Required properties for releasing -->
+        <github-update-repo>git@github.com:gnl42/BambooConnector-update.git</github-update-repo>
+        <github-local-clone>${project.build.directory}/checkout</github-local-clone>
+        <releases-directory>${github-local-clone}/releases</releases-directory>
+        <current-release-directory>${releases-directory}/${qualifiedVersion}</current-release-directory>
+        <!-- The label for the Composite sites -->
+        <site.label>BambooConnector</site.label>
+
+
     </properties>
     <build>
         <pluginManagement>
@@ -130,6 +140,17 @@
                     <groupId>org.eclipse.tycho</groupId>
                     <artifactId>tycho-packaging-plugin</artifactId>
                     <version>${tycho.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.eclipse.tycho.extras</groupId>
+                    <artifactId>tycho-eclipserun-plugin</artifactId>
+                    <version>${tycho.version}</version>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>exec-maven-plugin</artifactId>
+                    <version>3.1.1</version>
                 </plugin>
             </plugins>
         </pluginManagement>
@@ -282,6 +303,7 @@
             </plugin>
         </plugins>
     </build>
+
     <modules>
         <module>bamboo.target</module>
         <module>bamboo.core</module>
@@ -290,4 +312,32 @@
         <module>bamboo.feature</module>
         <module>bamboo.site</module>
     </modules>
+
+    <profiles>
+        <profile>
+            <!-- Activate this profile to perform the release to GitHub Pages -->
+            <id>release-composite</id>
+            <build>
+                <pluginManagement>
+                    <plugins>
+                        <plugin>
+                            <artifactId>maven-install-plugin</artifactId>
+                            <executions>
+                                <execution>
+                                    <id>default-install</id>
+                                    <phase>none</phase>
+                                </execution>
+                            </executions>
+                        </plugin>
+                        <plugin>
+                            <artifactId>maven-deploy-plugin</artifactId>
+                            <configuration>
+                                <skip>true</skip>
+                            </configuration>
+                        </plugin>
+                    </plugins>
+                </pluginManagement>
+            </build>
+        </profile>
+    </profiles>
 </project>
